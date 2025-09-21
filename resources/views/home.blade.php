@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'TechCorp - Leading Technology Solutions')
+@section('title', 'AlpiNet - Internet Cepat & Stabil di Bekasi')
 
 @section('content')
 <!-- Hero Section -->
@@ -9,143 +9,79 @@
         <div class="row align-items-center">
             <div class="col-lg-6">
                 <h1 class="display-4 fw-bold mb-4">
-                    Innovating the Future with 
-                    <span class="text-warning">Technology</span>
+                    Internet Tanpa Batas, 
+                    <span class="text-warning">Harga Bersahabat</span>
                 </h1>
                 <p class="lead mb-4">
-                    TechCorp is a leading technology solutions provider, specializing in cutting-edge 
-                    software development, digital transformation, and innovative IT consulting services.
+                    Nikmati koneksi stabil untuk streaming, belajar online, dan gaming tanpa lag. 
+                    Layanan internet cepat & stabil untuk warga Bekasi.
                 </p>
                 <div class="d-flex gap-3">
-                    <a href="{{ url('/services') }}" class="btn btn-primary-custom btn-lg">
-                        <i class="fas fa-rocket me-2"></i>Our Services
+                    <a href="{{ url('/contact') }}" class="btn btn-primary-custom btn-lg">
+                        <i class="fas fa-phone me-2"></i>Daftar Sekarang
                     </a>
-                    <a href="{{ url('/contact') }}" class="btn btn-outline-light btn-lg">
-                        <i class="fas fa-phone me-2"></i>Get Started
+                    <a href="{{ url('/services') }}" class="btn btn-outline-light btn-lg">
+                        <i class="fas fa-wifi me-2"></i>Lihat Paket
                     </a>
                 </div>
             </div>
             <div class="col-lg-6 text-center">
-                <i class="fas fa-laptop-code" style="font-size: 15rem; opacity: 0.1;"></i>
+                <i class="fas fa-wifi" style="font-size: 15rem; opacity: 0.1;"></i>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Company Overview -->
-<section class="py-5">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 mx-auto text-center mb-5">
-                <h2 class="fw-bold mb-3">About TechCorp</h2>
-                <p class="lead text-muted">
-                    Founded in 2015, TechCorp has been at the forefront of technological innovation, 
-                    helping businesses transform their operations through smart technology solutions.
-                </p>
-            </div>
-        </div>
-
-        <div class="row g-4">
-            <!-- Experience -->
-            <div class="col-md-4 text-center">
-                <div class="card h-100 border-0 shadow-sm card-hover">
-                    <div class="card-body p-4">
-                        <div class="text-primary mb-3">
-                            <i class="fas fa-award fa-3x"></i>
-                        </div>
-                        <h4 class="fw-bold">8+ Years</h4>
-                        <p class="text-muted mb-0">
-                            Of excellence in delivering innovative technology solutions to clients worldwide.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Projects -->
-            <div class="col-md-4 text-center">
-                <div class="card h-100 border-0 shadow-sm card-hover">
-                    <div class="card-body p-4">
-                        <div class="text-primary mb-3">
-                            <i class="fas fa-project-diagram fa-3x"></i>
-                        </div>
-                        <h4 class="fw-bold">500+</h4>
-                        <p class="text-muted mb-0">
-                            Successfully completed projects for startups, SMEs, and enterprise clients.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Team -->
-            <div class="col-md-4 text-center">
-                <div class="card h-100 border-0 shadow-sm card-hover">
-                    <div class="card-body p-4">
-                        <div class="text-primary mb-3">
-                            <i class="fas fa-users fa-3x"></i>
-                        </div>
-                        <h4 class="fw-bold">50+</h4>
-                        <p class="text-muted mb-0">
-                            Dedicated professionals including developers, designers, and consultants.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Key Features -->
+<!-- Kenapa Pilih Kami -->
 <section class="py-5 bg-light">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 mx-auto text-center mb-5">
-                <h2 class="fw-bold mb-3">Why Choose TechCorp?</h2>
+                <h2 class="fw-bold mb-3">Kenapa Pilih Kami?</h2>
                 <p class="lead text-muted">
-                    We combine technical expertise with business acumen to deliver solutions that drive growth.
+                    Kami menghadirkan koneksi handal dengan harga terjangkau untuk rumah, usaha kecil, maupun kebutuhan gaming.
                 </p>
             </div>
         </div>
 
         <div class="row g-4">
-            <!-- Innovation -->
+            <!-- Kecepatan Stabil -->
             <div class="col-lg-6">
                 <div class="d-flex">
                     <div class="flex-shrink-0">
                         <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" 
                              style="width: 60px; height: 60px;">
-                            <i class="fas fa-lightbulb fa-lg"></i>
+                            <i class="fas fa-bolt fa-lg"></i>
                         </div>
                     </div>
                     <div class="flex-grow-1 ms-3">
-                        <h5 class="fw-bold">Innovation-Driven</h5>
+                        <h5 class="fw-bold">⚡ Kecepatan Stabil</h5>
                         <p class="text-muted mb-0">
-                            We stay ahead of technology trends to provide cutting-edge solutions that give 
-                            your business a competitive advantage.
+                            Jaringan handal tanpa putus-putus untuk aktivitas online Anda.
                         </p>
                     </div>
                 </div>
             </div>
 
-            <!-- Quality -->
+            <!-- Harga Terjangkau -->
             <div class="col-lg-6">
                 <div class="d-flex">
                     <div class="flex-shrink-0">
                         <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" 
                              style="width: 60px; height: 60px;">
-                            <i class="fas fa-star fa-lg"></i>
+                            <i class="fas fa-dollar-sign fa-lg"></i>
                         </div>
                     </div>
                     <div class="flex-grow-1 ms-3">
-                        <h5 class="fw-bold">Quality Assurance</h5>
+                        <h5 class="fw-bold">💰 Harga Terjangkau</h5>
                         <p class="text-muted mb-0">
-                            Our rigorous testing and quality assurance processes ensure that every project 
-                            meets the highest standards of excellence.
+                            Paket sesuai kebutuhan & budget Anda.
                         </p>
                     </div>
                 </div>
             </div>
 
-            <!-- Support -->
+            <!-- Support Cepat -->
             <div class="col-lg-6">
                 <div class="d-flex">
                     <div class="flex-shrink-0">
@@ -155,30 +91,164 @@
                         </div>
                     </div>
                     <div class="flex-grow-1 ms-3">
-                        <h5 class="fw-bold">24/7 Support</h5>
+                        <h5 class="fw-bold">🎧 Support Cepat</h5>
                         <p class="text-muted mb-0">
-                            Our dedicated support team is available round-the-clock to assist you with 
-                            any technical issues or questions.
+                            Tim teknis siap membantu Anda kapan saja.
                         </p>
                     </div>
                 </div>
             </div>
 
-            <!-- Scalability -->
+            <!-- Jangkauan Lokal -->
             <div class="col-lg-6">
                 <div class="d-flex">
                     <div class="flex-shrink-0">
                         <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" 
                              style="width: 60px; height: 60px;">
-                            <i class="fas fa-expand-arrows-alt fa-lg"></i>
+                            <i class="fas fa-map-marker-alt fa-lg"></i>
                         </div>
                     </div>
                     <div class="flex-grow-1 ms-3">
-                        <h5 class="fw-bold">Scalable Solutions</h5>
+                        <h5 class="fw-bold">🌍 Jangkauan Lokal</h5>
                         <p class="text-muted mb-0">
-                            Our solutions are designed to grow with your business, ensuring long-term 
-                            value and adaptability to changing needs.
+                            Fokus melayani area Bekasi dengan kualitas terbaik.
                         </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Paket Internet Singkat -->
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center mb-5">
+                <h2 class="fw-bold mb-3">Paket Internet Singkat</h2>
+                <p class="lead text-muted">
+                    Pilih paket yang sesuai dengan kebutuhan internet Anda.
+                </p>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            <!-- Basic -->
+            <div class="col-md-4 text-center">
+                <div class="card h-100 border-0 shadow-sm card-hover">
+                    <div class="card-body p-4">
+                        <div class="text-primary mb-3">
+                            <i class="fas fa-wifi fa-3x"></i>
+                        </div>
+                        <h4 class="fw-bold">Basic</h4>
+                        <h5 class="text-primary">10 Mbps</h5>
+                        <h3 class="fw-bold text-success">Rp 150.000<small class="text-muted">/bln</small></h3>
+                        <p class="text-muted mb-0">
+                            Cocok untuk browsing, sosial media & chat.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Family -->
+            <div class="col-md-4 text-center">
+                <div class="card h-100 border-0 shadow-sm card-hover border-primary">
+                    <div class="card-body p-4">
+                        <div class="badge bg-primary mb-2">Populer</div>
+                        <div class="text-primary mb-3">
+                            <i class="fas fa-wifi fa-3x"></i>
+                        </div>
+                        <h4 class="fw-bold">Family</h4>
+                        <h5 class="text-primary">20 Mbps</h5>
+                        <h3 class="fw-bold text-success">Rp 250.000<small class="text-muted">/bln</small></h3>
+                        <p class="text-muted mb-0">
+                            Cocok untuk streaming, meeting online & belajar.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Premium -->
+            <div class="col-md-4 text-center">
+                <div class="card h-100 border-0 shadow-sm card-hover">
+                    <div class="card-body p-4">
+                        <div class="text-primary mb-3">
+                            <i class="fas fa-wifi fa-3x"></i>
+                        </div>
+                        <h4 class="fw-bold">Premium</h4>
+                        <h5 class="text-primary">50 Mbps</h5>
+                        <h3 class="fw-bold text-success">Rp 400.000<small class="text-muted">/bln</small></h3>
+                        <p class="text-muted mb-0">
+                            Cocok untuk gaming, usaha kecil & streaming 4K.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center mt-4">
+            <a href="{{ url('/services') }}" class="btn btn-primary-custom">
+                <i class="fas fa-eye me-2"></i>Lihat Semua Layanan
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Testimoni Pelanggan -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center mb-5">
+                <h2 class="fw-bold mb-3">Testimoni Pelanggan</h2>
+                <p class="lead text-muted">
+                    Apa kata pelanggan kami tentang layanan AlpiNet.
+                </p>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <div class="mb-3">
+                            <i class="fas fa-quote-left fa-2x text-primary"></i>
+                        </div>
+                        <p class="text-muted mb-3">
+                            "Internetnya stabil banget, cocok buat kerja WFH."
+                        </p>
+                        <div class="d-flex align-items-center">
+                            <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" 
+                                 style="width: 40px; height: 40px;">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div>
+                                <h6 class="fw-bold mb-0">Budi</h6>
+                                <small class="text-muted">Warga Burangkeng</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <div class="mb-3">
+                            <i class="fas fa-quote-left fa-2x text-primary"></i>
+                        </div>
+                        <p class="text-muted mb-3">
+                            "Anak-anak bisa belajar online lancar, harga juga ramah."
+                        </p>
+                        <div class="d-flex align-items-center">
+                            <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" 
+                                 style="width: 40px; height: 40px;">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div>
+                                <h6 class="fw-bold mb-0">Ibu Sari</h6>
+                                <small class="text-muted">Warga Tambelang</small>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -191,16 +261,16 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 mx-auto text-center">
-                <h2 class="fw-bold mb-3">Ready to Transform Your Business?</h2>
+                <h2 class="fw-bold mb-3">Siap Untuk Berlangganan?</h2>
                 <p class="lead text-muted mb-4">
-                    Let's discuss how TechCorp can help you achieve your technology goals and drive your business forward.
+                    Hubungi kami sekarang dan nikmati internet cepat & stabil di rumah Anda.
                 </p>
                 <div class="d-flex gap-3 justify-content-center">
                     <a href="{{ url('/contact') }}" class="btn btn-primary-custom btn-lg">
-                        <i class="fas fa-phone me-2"></i>Contact Us Today
+                        <i class="fas fa-phone me-2"></i>Hubungi Kami
                     </a>
                     <a href="{{ url('/about') }}" class="btn btn-outline-primary btn-lg">
-                        <i class="fas fa-info-circle me-2"></i>Learn More
+                        <i class="fas fa-info-circle me-2"></i>Tentang Kami
                     </a>
                 </div>
             </div>

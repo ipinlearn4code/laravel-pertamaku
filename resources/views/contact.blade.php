@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Contact Us - TechCorp')
+@section('title', 'Hubungi Kami - AlpiNet')
 
 @section('content')
 <!-- Page Header -->
@@ -8,9 +8,10 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 mx-auto text-center">
-                <h1 class="display-4 fw-bold mb-4">Contact Us</h1>
+                <h1 class="display-4 fw-bold mb-4">Hubungi Kami</h1>
                 <p class="lead">
-                    Get in touch with our team to discuss your project and discover how we can help your business grow.
+                    Siap berlangganan internet AlpiNet? Hubungi tim kami untuk informasi lebih lanjut 
+                    dan daftar paket yang sesuai dengan kebutuhan Anda.
                 </p>
             </div>
         </div>
@@ -25,9 +26,9 @@
             <div class="col-lg-7">
                 <div class="card border-0 shadow-sm">
                     <div class="card-body p-5">
-                        <h3 class="fw-bold mb-4">Send us a Message</h3>
+                        <h3 class="fw-bold mb-4">Daftar Paket Internet</h3>
                         <p class="text-muted mb-4">
-                            Fill out the form below and we'll get back to you within 24 hours.
+                            Isi formulir di bawah dan kami akan menghubungi Anda dalam 24 jam untuk proses instalasi.
                         </p>
 
                         <form action="#" method="POST" class="needs-validation" novalidate>
@@ -35,72 +36,73 @@
                             <div class="row g-3">
                                 <!-- Name Fields -->
                                 <div class="col-md-6">
-                                    <label for="first_name" class="form-label">First Name *</label>
-                                    <input type="text" class="form-control" id="first_name" name="first_name" required>
+                                    <label for="nama_lengkap" class="form-label">Nama Lengkap *</label>
+                                    <input type="text" class="form-control" id="nama_lengkap" name="nama_lengkap" required>
                                     <div class="invalid-feedback">
-                                        Please provide your first name.
+                                        Silakan masukkan nama lengkap Anda.
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="last_name" class="form-label">Last Name *</label>
-                                    <input type="text" class="form-control" id="last_name" name="last_name" required>
+                                    <label for="no_telepon" class="form-label">No. Telepon *</label>
+                                    <input type="tel" class="form-control" id="no_telepon" name="no_telepon" required>
                                     <div class="invalid-feedback">
-                                        Please provide your last name.
+                                        Silakan masukkan nomor telepon yang valid.
                                     </div>
                                 </div>
 
                                 <!-- Contact Fields -->
                                 <div class="col-md-6">
-                                    <label for="email" class="form-label">Email Address *</label>
-                                    <input type="email" class="form-control" id="email" name="email" required>
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="email" name="email">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="whatsapp" class="form-label">WhatsApp</label>
+                                    <input type="tel" class="form-control" id="whatsapp" name="whatsapp" placeholder="Nomor WhatsApp">
+                                </div>
+
+                                <!-- Address -->
+                                <div class="col-12">
+                                    <label for="alamat" class="form-label">Alamat Lengkap *</label>
+                                    <textarea class="form-control" id="alamat" name="alamat" rows="3" 
+                                              placeholder="Jl. Nama Jalan, No. Rumah, RT/RW, Kelurahan, Kecamatan, Bekasi" required></textarea>
                                     <div class="invalid-feedback">
-                                        Please provide a valid email address.
+                                        Silakan masukkan alamat lengkap untuk instalasi.
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <label for="phone" class="form-label">Phone Number</label>
-                                    <input type="tel" class="form-control" id="phone" name="phone">
-                                </div>
 
-                                <!-- Company & Service -->
+                                <!-- Package Selection -->
                                 <div class="col-md-6">
-                                    <label for="company" class="form-label">Company Name</label>
-                                    <input type="text" class="form-control" id="company" name="company">
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="service" class="form-label">Service of Interest</label>
-                                    <select class="form-select" id="service" name="service">
-                                        <option value="">Select a service</option>
-                                        <option value="web-development">Web Development</option>
-                                        <option value="mobile-apps">Mobile Applications</option>
-                                        <option value="cloud-solutions">Cloud Solutions</option>
-                                        <option value="it-consulting">IT Consulting</option>
-                                        <option value="ui-ux-design">UI/UX Design</option>
-                                        <option value="other">Other</option>
+                                    <label for="paket" class="form-label">Pilih Paket Internet *</label>
+                                    <select class="form-select" id="paket" name="paket" required>
+                                        <option value="">Pilih paket</option>
+                                        <option value="basic">Basic - 10 Mbps (Rp 150.000/bulan)</option>
+                                        <option value="family">Family - 20 Mbps (Rp 250.000/bulan)</option>
+                                        <option value="premium">Premium - 50 Mbps (Rp 400.000/bulan)</option>
+                                        <option value="student">Student - 15 Mbps (Rp 180.000/bulan)</option>
+                                        <option value="business">Business - 100 Mbps (Rp 750.000/bulan)</option>
                                     </select>
+                                    <div class="invalid-feedback">
+                                        Silakan pilih paket internet.
+                                    </div>
                                 </div>
 
-                                <!-- Budget -->
-                                <div class="col-12">
-                                    <label for="budget" class="form-label">Project Budget</label>
-                                    <select class="form-select" id="budget" name="budget">
-                                        <option value="">Select budget range</option>
-                                        <option value="under-10k">Under $10,000</option>
-                                        <option value="10k-25k">$10,000 - $25,000</option>
-                                        <option value="25k-50k">$25,000 - $50,000</option>
-                                        <option value="50k-100k">$50,000 - $100,000</option>
-                                        <option value="over-100k">Over $100,000</option>
+                                <!-- Installation Preference -->
+                                <div class="col-md-6">
+                                    <label for="waktu_instalasi" class="form-label">Waktu Instalasi Preferensi</label>
+                                    <select class="form-select" id="waktu_instalasi" name="waktu_instalasi">
+                                        <option value="">Pilih waktu</option>
+                                        <option value="weekday-morning">Hari kerja - Pagi (08:00-12:00)</option>
+                                        <option value="weekday-afternoon">Hari kerja - Siang (13:00-17:00)</option>
+                                        <option value="weekend">Akhir pekan</option>
+                                        <option value="flexible">Fleksibel</option>
                                     </select>
                                 </div>
 
                                 <!-- Message -->
                                 <div class="col-12">
-                                    <label for="message" class="form-label">Project Description *</label>
-                                    <textarea class="form-control" id="message" name="message" rows="5" 
-                                              placeholder="Tell us about your project, requirements, timeline, and any specific goals you'd like to achieve..." required></textarea>
-                                    <div class="invalid-feedback">
-                                        Please provide details about your project.
-                                    </div>
+                                    <label for="catatan" class="form-label">Catatan Tambahan</label>
+                                    <textarea class="form-control" id="catatan" name="catatan" rows="3" 
+                                              placeholder="Pertanyaan khusus, request instalasi, atau informasi tambahan..."></textarea>
                                 </div>
 
                                 <!-- Newsletter -->
@@ -108,7 +110,7 @@
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" id="newsletter" name="newsletter" value="1">
                                         <label class="form-check-label" for="newsletter">
-                                            Subscribe to our newsletter for technology insights and updates
+                                            Saya ingin mendapatkan informasi promo dan update dari AlpiNet
                                         </label>
                                     </div>
                                 </div>
@@ -116,7 +118,7 @@
                                 <!-- Submit Button -->
                                 <div class="col-12">
                                     <button type="submit" class="btn btn-primary-custom btn-lg w-100">
-                                        <i class="fas fa-paper-plane me-2"></i>Send Message
+                                        <i class="fas fa-paper-plane me-2"></i>Kirim Pendaftaran
                                     </button>
                                 </div>
                             </div>
@@ -130,7 +132,7 @@
                 <!-- Contact Details -->
                 <div class="card border-0 shadow-sm mb-4">
                     <div class="card-body p-4">
-                        <h4 class="fw-bold mb-4">Get in Touch</h4>
+                        <h4 class="fw-bold mb-4">Informasi Kontak</h4>
                         
                         <div class="d-flex align-items-center mb-3">
                             <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" 
@@ -138,8 +140,20 @@
                                 <i class="fas fa-map-marker-alt"></i>
                             </div>
                             <div>
-                                <h6 class="fw-bold mb-1">Address</h6>
-                                <p class="text-muted mb-0">123 Tech Street<br>Innovation City, TC 12345</p>
+                                <h6 class="fw-bold mb-1">Alamat Kantor</h6>
+                                <p class="text-muted mb-0">Jl. Raya Bekasi No. 123<br>Bekasi Timur, Bekasi 17113</p>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-success text-white rounded-circle d-flex align-items-center justify-content-center me-3" 
+                                 style="width: 50px; height: 50px;">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <div>
+                                <h6 class="fw-bold mb-1">WhatsApp</h6>
+                                <p class="text-muted mb-0">+62 812-3456-7890</p>
+                                <small class="text-success">Respon cepat 24/7</small>
                             </div>
                         </div>
 
@@ -149,8 +163,8 @@
                                 <i class="fas fa-phone"></i>
                             </div>
                             <div>
-                                <h6 class="fw-bold mb-1">Phone</h6>
-                                <p class="text-muted mb-0">+1 (555) 123-4567</p>
+                                <h6 class="fw-bold mb-1">Telepon</h6>
+                                <p class="text-muted mb-0">(021) 8890-1234</p>
                             </div>
                         </div>
 
@@ -161,7 +175,7 @@
                             </div>
                             <div>
                                 <h6 class="fw-bold mb-1">Email</h6>
-                                <p class="text-muted mb-0">info@techcorp.com</p>
+                                <p class="text-muted mb-0">info@alpinet.id</p>
                             </div>
                         </div>
 
@@ -171,43 +185,56 @@
                                 <i class="fas fa-clock"></i>
                             </div>
                             <div>
-                                <h6 class="fw-bold mb-1">Business Hours</h6>
-                                <p class="text-muted mb-0">Mon - Fri: 9:00 AM - 6:00 PM<br>Sat: 10:00 AM - 2:00 PM</p>
+                                <h6 class="fw-bold mb-1">Jam Operasional</h6>
+                                <p class="text-muted mb-0">
+                                    Senin - Jumat: 08:00 - 17:00<br>
+                                    Sabtu: 08:00 - 15:00<br>
+                                    <small class="text-success">Support teknis 24/7</small>
+                                </p>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Response Time -->
+                <!-- Quick Contact -->
                 <div class="card border-0 shadow-sm mb-4">
                     <div class="card-body p-4 text-center">
-                        <div class="text-primary mb-3">
-                            <i class="fas fa-clock fa-3x"></i>
+                        <div class="text-success mb-3">
+                            <i class="fab fa-whatsapp fa-3x"></i>
                         </div>
-                        <h5 class="fw-bold mb-2">Quick Response</h5>
-                        <p class="text-muted mb-0">
-                            We typically respond to all inquiries within 24 hours during business days.
+                        <h5 class="fw-bold mb-2">Hubungi Via WhatsApp</h5>
+                        <p class="text-muted mb-3">
+                            Chat langsung dengan tim customer service kami untuk konsultasi gratis.
                         </p>
+                        <a href="https://wa.me/6281234567890" target="_blank" class="btn btn-success btn-lg">
+                            <i class="fab fa-whatsapp me-2"></i>Chat Sekarang
+                        </a>
                     </div>
                 </div>
 
-                <!-- Social Media -->
+                <!-- Area Coverage -->
                 <div class="card border-0 shadow-sm">
-                    <div class="card-body p-4 text-center">
-                        <h5 class="fw-bold mb-3">Follow Us</h5>
-                        <div class="d-flex justify-content-center gap-3">
-                            <a href="#" class="btn btn-outline-primary btn-sm rounded-circle" style="width: 40px; height: 40px;">
-                                <i class="fab fa-facebook-f"></i>
-                            </a>
-                            <a href="#" class="btn btn-outline-primary btn-sm rounded-circle" style="width: 40px; height: 40px;">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                            <a href="#" class="btn btn-outline-primary btn-sm rounded-circle" style="width: 40px; height: 40px;">
-                                <i class="fab fa-linkedin-in"></i>
-                            </a>
-                            <a href="#" class="btn btn-outline-primary btn-sm rounded-circle" style="width: 40px; height: 40px;">
-                                <i class="fab fa-github"></i>
-                            </a>
+                    <div class="card-body p-4">
+                        <h5 class="fw-bold mb-3">Area Jangkauan</h5>
+                        <div class="row g-2">
+                            <div class="col-6">
+                                <span class="badge bg-light text-dark w-100">Bekasi Timur</span>
+                            </div>
+                            <div class="col-6">
+                                <span class="badge bg-light text-dark w-100">Bekasi Barat</span>
+                            </div>
+                            <div class="col-6">
+                                <span class="badge bg-light text-dark w-100">Bekasi Utara</span>
+                            </div>
+                            <div class="col-6">
+                                <span class="badge bg-light text-dark w-100">Bekasi Selatan</span>
+                            </div>
+                        </div>
+                        <div class="mt-3">
+                            <small class="text-muted">
+                                <i class="fas fa-info-circle me-1"></i>
+                                Cek ketersediaan di lokasi Anda dengan menghubungi kami
+                            </small>
                         </div>
                     </div>
                 </div>
@@ -216,34 +243,72 @@
     </div>
 </section>
 
-<!-- Map Section -->
+<!-- Process -->
 <section class="py-5 bg-light">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 mx-auto text-center mb-5">
-                <h2 class="fw-bold mb-3">Visit Our Office</h2>
+                <h2 class="fw-bold mb-3">Proses Berlangganan</h2>
                 <p class="lead text-muted">
-                    We'd love to meet you in person! Schedule a visit to our office for a face-to-face consultation.
+                    Mudah dan cepat! Hanya 4 langkah untuk menikmati internet AlpiNet.
                 </p>
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-12">
-                <div class="card border-0 shadow-sm">
-                    <div class="card-body p-0">
-                        <!-- Placeholder for map - You would integrate with Google Maps or similar -->
-                        <div class="bg-light d-flex align-items-center justify-content-center" style="height: 400px;">
-                            <div class="text-center">
-                                <i class="fas fa-map-marked-alt fa-4x text-primary mb-3"></i>
-                                <h5 class="fw-bold">Interactive Map</h5>
-                                <p class="text-muted mb-3">123 Tech Street, Innovation City, TC 12345</p>
-                                <a href="https://maps.google.com" target="_blank" class="btn btn-primary">
-                                    <i class="fas fa-external-link-alt me-2"></i>View on Google Maps
-                                </a>
-                            </div>
-                        </div>
+        <div class="row g-4">
+            <!-- Step 1 -->
+            <div class="col-lg-3 col-md-6">
+                <div class="text-center">
+                    <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" 
+                         style="width: 80px; height: 80px;">
+                        <span class="fw-bold fs-4">1</span>
                     </div>
+                    <h5 class="fw-bold mb-3">Daftar</h5>
+                    <p class="text-muted">
+                        Isi formulir pendaftaran atau hubungi kami via WhatsApp untuk konsultasi paket.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="col-lg-3 col-md-6">
+                <div class="text-center">
+                    <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" 
+                         style="width: 80px; height: 80px;">
+                        <span class="fw-bold fs-4">2</span>
+                    </div>
+                    <h5 class="fw-bold mb-3">Survey</h5>
+                    <p class="text-muted">
+                        Tim teknis melakukan survey lokasi untuk memastikan coverage dan kualitas sinyal.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="col-lg-3 col-md-6">
+                <div class="text-center">
+                    <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" 
+                         style="width: 80px; height: 80px;">
+                        <span class="fw-bold fs-4">3</span>
+                    </div>
+                    <h5 class="fw-bold mb-3">Instalasi</h5>
+                    <p class="text-muted">
+                        Proses instalasi perangkat dan konfigurasi jaringan di lokasi Anda.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="col-lg-3 col-md-6">
+                <div class="text-center">
+                    <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" 
+                         style="width: 80px; height: 80px;">
+                        <span class="fw-bold fs-4">4</span>
+                    </div>
+                    <h5 class="fw-bold mb-3">Aktivasi</h5>
+                    <p class="text-muted">
+                        Internet siap digunakan! Nikmati koneksi cepat dan stabil dari AlpiNet.
+                    </p>
                 </div>
             </div>
         </div>
@@ -255,9 +320,9 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 mx-auto text-center mb-5">
-                <h2 class="fw-bold mb-3">Frequently Asked Questions</h2>
+                <h2 class="fw-bold mb-3">Pertanyaan yang Sering Diajukan</h2>
                 <p class="lead text-muted">
-                    Quick answers to common questions about our services and processes.
+                    Jawaban untuk pertanyaan umum seputar layanan internet AlpiNet.
                 </p>
             </div>
         </div>
@@ -270,14 +335,14 @@
                         <h2 class="accordion-header" id="faq1">
                             <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" 
                                     data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
-                                How long does a typical project take?
+                                Berapa lama proses instalasi internet AlpiNet?
                             </button>
                         </h2>
                         <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="faq1" 
                              data-bs-parent="#faqAccordion">
                             <div class="accordion-body text-muted">
-                                Project timelines vary depending on scope and complexity. Simple websites typically take 4-6 weeks, 
-                                while complex applications can take 3-6 months or more. We'll provide a detailed timeline during our initial consultation.
+                                Proses instalasi biasanya memakan waktu 1-3 hari kerja setelah konfirmasi pendaftaran dan survey lokasi. 
+                                Tim teknis kami akan mengatur jadwal instalasi yang sesuai dengan ketersediaan Anda.
                             </div>
                         </div>
                     </div>
@@ -287,14 +352,14 @@
                         <h2 class="accordion-header" id="faq2">
                             <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" 
                                     data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
-                                Do you provide ongoing support and maintenance?
+                                Apakah ada biaya instalasi dan berapa besarnya?
                             </button>
                         </h2>
                         <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="faq2" 
                              data-bs-parent="#faqAccordion">
                             <div class="accordion-body text-muted">
-                                Yes! We offer comprehensive maintenance and support packages including regular updates, 
-                                security patches, backup management, and 24/7 technical support to keep your systems running smoothly.
+                                Saat ini kami sedang ada promo gratis instalasi untuk pelanggan baru! 
+                                Promo ini berlaku terbatas, jadi segera hubungi kami untuk mendapatkan penawaran terbaik.
                             </div>
                         </div>
                     </div>
@@ -304,14 +369,14 @@
                         <h2 class="accordion-header" id="faq3">
                             <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" 
                                     data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
-                                What technologies do you specialize in?
+                                Bagaimana jika ada gangguan atau masalah teknis?
                             </button>
                         </h2>
                         <div id="collapse3" class="accordion-collapse collapse" aria-labelledby="faq3" 
                              data-bs-parent="#faqAccordion">
                             <div class="accordion-body text-muted">
-                                We specialize in modern web technologies including React, Vue.js, Laravel, Node.js, Python, 
-                                mobile development with React Native and Flutter, and cloud platforms like AWS and Azure.
+                                Tim support teknis kami siaga 24/7 untuk membantu mengatasi gangguan. 
+                                Anda bisa menghubungi kami via WhatsApp, telepon, atau email kapan saja untuk mendapatkan bantuan cepat.
                             </div>
                         </div>
                     </div>
@@ -321,14 +386,14 @@
                         <h2 class="accordion-header" id="faq4">
                             <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" 
                                     data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
-                                Can you work with our existing team?
+                                Apakah bisa upgrade atau downgrade paket?
                             </button>
                         </h2>
                         <div id="collapse4" class="accordion-collapse collapse" aria-labelledby="faq4" 
                              data-bs-parent="#faqAccordion">
                             <div class="accordion-body text-muted">
-                                Absolutely! We frequently collaborate with in-house teams, providing additional expertise, 
-                                resources, or specialized skills to help you achieve your project goals more effectively.
+                                Tentu saja! Anda bisa upgrade atau downgrade paket kapan saja sesuai kebutuhan. 
+                                Hubungi customer service kami untuk proses perubahan paket yang mudah dan cepat.
                             </div>
                         </div>
                     </div>

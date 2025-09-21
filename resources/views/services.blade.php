@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Our Services - TechCorp')
+@section('title', 'Paket Internet - AlpiNet')
 
 @section('content')
 <!-- Page Header -->
@@ -8,123 +8,186 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 mx-auto text-center">
-                <h1 class="display-4 fw-bold mb-4">Our Services</h1>
+                <h1 class="display-4 fw-bold mb-4">Paket Internet AlpiNet</h1>
                 <p class="lead">
-                    Comprehensive technology solutions tailored to drive your business forward.
+                    Pilih paket internet yang sesuai dengan kebutuhan dan budget Anda. 
+                    Internet cepat, stabil, dan harga terjangkau untuk semua kalangan.
                 </p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Services Overview -->
+<!-- Paket Internet Utama -->
 <section class="py-5">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 mx-auto text-center mb-5">
-                <h2 class="fw-bold mb-3">What We Offer</h2>
+                <h2 class="fw-bold mb-3">Paket Internet Utama</h2>
                 <p class="lead text-muted">
-                    From concept to deployment, we provide end-to-end technology solutions that transform your business operations and accelerate growth.
+                    Paket internet rumahan dengan kecepatan dan kuota yang bervariasi sesuai kebutuhan Anda.
                 </p>
             </div>
         </div>
 
         <div class="row g-4">
-            <!-- Web Development -->
+            <!-- Basic Package -->
+            <div class="col-lg-4">
+                <div class="card h-100 border-0 shadow-sm card-hover">
+                    <div class="card-body p-5 text-center">
+                        <div class="text-primary mb-4">
+                            <i class="fas fa-wifi fa-3x"></i>
+                        </div>
+                        <h3 class="fw-bold mb-3">Basic</h3>
+                        <div class="mb-4">
+                            <h1 class="fw-bold text-primary">10 Mbps</h1>
+                            <p class="text-muted">Download & Upload</p>
+                        </div>
+                        <div class="mb-4">
+                            <h2 class="fw-bold text-success">Rp 150.000<small class="text-muted fs-6">/bulan</small></h2>
+                        </div>
+                        <ul class="list-unstyled text-start mb-4">
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Cocok untuk browsing & sosial media</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Streaming video 720p</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Chat & video call</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Support 1-2 device</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Support 24/7</li>
+                        </ul>
+                        <a href="{{ url('/contact') }}" class="btn btn-outline-primary btn-lg w-100">
+                            Pilih Paket
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Family Package - Popular -->
+            <div class="col-lg-4">
+                <div class="card h-100 border-primary shadow card-hover position-relative">
+                    <div class="position-absolute top-0 start-50 translate-middle">
+                        <span class="badge bg-primary px-3 py-2">POPULER</span>
+                    </div>
+                    <div class="card-body p-5 text-center">
+                        <div class="text-primary mb-4">
+                            <i class="fas fa-wifi fa-3x"></i>
+                        </div>
+                        <h3 class="fw-bold mb-3">Family</h3>
+                        <div class="mb-4">
+                            <h1 class="fw-bold text-primary">20 Mbps</h1>
+                            <p class="text-muted">Download & Upload</p>
+                        </div>
+                        <div class="mb-4">
+                            <h2 class="fw-bold text-success">Rp 250.000<small class="text-muted fs-6">/bulan</small></h2>
+                        </div>
+                        <ul class="list-unstyled text-start mb-4">
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Streaming HD tanpa buffering</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Meeting online lancar</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Belajar online stabil</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Support 3-5 device</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Support 24/7</li>
+                        </ul>
+                        <a href="{{ url('/contact') }}" class="btn btn-primary btn-lg w-100">
+                            Pilih Paket
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Premium Package -->
+            <div class="col-lg-4">
+                <div class="card h-100 border-0 shadow-sm card-hover">
+                    <div class="card-body p-5 text-center">
+                        <div class="text-primary mb-4">
+                            <i class="fas fa-wifi fa-3x"></i>
+                        </div>
+                        <h3 class="fw-bold mb-3">Premium</h3>
+                        <div class="mb-4">
+                            <h1 class="fw-bold text-primary">50 Mbps</h1>
+                            <p class="text-muted">Download & Upload</p>
+                        </div>
+                        <div class="mb-4">
+                            <h2 class="fw-bold text-success">Rp 400.000<small class="text-muted fs-6">/bulan</small></h2>
+                        </div>
+                        <ul class="list-unstyled text-start mb-4">
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Gaming online tanpa lag</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Streaming 4K Ultra HD</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Usaha kecil & kantor</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Support 5-10 device</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Priority support</li>
+                        </ul>
+                        <a href="{{ url('/contact') }}" class="btn btn-outline-primary btn-lg w-100">
+                            Pilih Paket
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Paket Spesial -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center mb-5">
+                <h2 class="fw-bold mb-3">Paket Spesial</h2>
+                <p class="lead text-muted">
+                    Paket khusus untuk kebutuhan tertentu dengan harga dan fitur yang disesuaikan.
+                </p>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            <!-- Student Package -->
             <div class="col-lg-6">
                 <div class="card h-100 border-0 shadow-sm card-hover">
                     <div class="card-body p-5">
                         <div class="d-flex align-items-center mb-4">
-                            <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" 
+                            <div class="bg-warning text-white rounded-circle d-flex align-items-center justify-content-center me-3" 
                                  style="width: 60px; height: 60px;">
-                                <i class="fas fa-globe fa-lg"></i>
+                                <i class="fas fa-graduation-cap fa-lg"></i>
                             </div>
-                            <h3 class="fw-bold mb-0">Web Development</h3>
+                            <div>
+                                <h3 class="fw-bold mb-0">Student</h3>
+                                <p class="text-muted mb-0">15 Mbps - Rp 180.000/bulan</p>
+                            </div>
                         </div>
                         <p class="text-muted mb-4">
-                            Custom web applications and websites built with modern frameworks and technologies. 
-                            We create responsive, scalable, and secure web solutions.
+                            Paket khusus untuk pelajar dan mahasiswa dengan harga spesial. 
+                            Cocok untuk belajar online, tugas, dan riset.
                         </p>
                         <ul class="list-unstyled">
-                            <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>Custom Web Applications</li>
-                            <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>E-commerce Platforms</li>
-                            <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>Content Management Systems</li>
-                            <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>Progressive Web Apps (PWA)</li>
+                            <li class="mb-2"><i class="fas fa-check text-warning me-2"></i>Akses unlimited</li>
+                            <li class="mb-2"><i class="fas fa-check text-warning me-2"></i>Speed 15 Mbps</li>
+                            <li class="mb-2"><i class="fas fa-check text-warning me-2"></i>Gratis instalasi</li>
+                            <li class="mb-2"><i class="fas fa-check text-warning me-2"></i>Syarat: Kartu pelajar/mahasiswa</li>
                         </ul>
                     </div>
                 </div>
             </div>
 
-            <!-- Mobile Applications -->
+            <!-- Business Package -->
             <div class="col-lg-6">
                 <div class="card h-100 border-0 shadow-sm card-hover">
                     <div class="card-body p-5">
                         <div class="d-flex align-items-center mb-4">
-                            <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" 
+                            <div class="bg-success text-white rounded-circle d-flex align-items-center justify-content-center me-3" 
                                  style="width: 60px; height: 60px;">
-                                <i class="fas fa-mobile-alt fa-lg"></i>
+                                <i class="fas fa-building fa-lg"></i>
                             </div>
-                            <h3 class="fw-bold mb-0">Mobile Applications</h3>
+                            <div>
+                                <h3 class="fw-bold mb-0">Business</h3>
+                                <p class="text-muted mb-0">100 Mbps - Rp 750.000/bulan</p>
+                            </div>
                         </div>
                         <p class="text-muted mb-4">
-                            Native and cross-platform mobile applications for iOS and Android. 
-                            Engaging user experiences with optimal performance and functionality.
+                            Paket untuk usaha kecil menengah dan kantor dengan kecepatan tinggi 
+                            dan dukungan teknis priority.
                         </p>
                         <ul class="list-unstyled">
-                            <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>iOS & Android Apps</li>
-                            <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>Cross-platform Solutions</li>
-                            <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>App Store Optimization</li>
-                            <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>Maintenance & Updates</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Cloud Solutions -->
-            <div class="col-lg-6">
-                <div class="card h-100 border-0 shadow-sm card-hover">
-                    <div class="card-body p-5">
-                        <div class="d-flex align-items-center mb-4">
-                            <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" 
-                                 style="width: 60px; height: 60px;">
-                                <i class="fas fa-cloud fa-lg"></i>
-                            </div>
-                            <h3 class="fw-bold mb-0">Cloud Solutions</h3>
-                        </div>
-                        <p class="text-muted mb-4">
-                            Cloud migration, infrastructure setup, and optimization services. 
-                            Leverage the power of cloud computing for scalability and efficiency.
-                        </p>
-                        <ul class="list-unstyled">
-                            <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>Cloud Migration</li>
-                            <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>Infrastructure Management</li>
-                            <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>DevOps & CI/CD</li>
-                            <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>Security & Compliance</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- IT Consulting -->
-            <div class="col-lg-6">
-                <div class="card h-100 border-0 shadow-sm card-hover">
-                    <div class="card-body p-5">
-                        <div class="d-flex align-items-center mb-4">
-                            <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" 
-                                 style="width: 60px; height: 60px;">
-                                <i class="fas fa-chart-line fa-lg"></i>
-                            </div>
-                            <h3 class="fw-bold mb-0">IT Consulting</h3>
-                        </div>
-                        <p class="text-muted mb-4">
-                            Strategic IT consulting to align technology with your business goals. 
-                            Expert guidance for digital transformation and technology roadmaps.
-                        </p>
-                        <ul class="list-unstyled">
-                            <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>Digital Strategy</li>
-                            <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>Technology Assessment</li>
-                            <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>Process Optimization</li>
-                            <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>System Integration</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Speed dedicated 100 Mbps</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Static IP (opsional)</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Priority support</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>SLA 99.5% uptime</li>
                         </ul>
                     </div>
                 </div>
@@ -133,99 +196,99 @@
     </div>
 </section>
 
-<!-- Additional Services -->
-<section class="py-5 bg-light">
+<!-- Layanan Tambahan -->
+<section class="py-5">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 mx-auto text-center mb-5">
-                <h2 class="fw-bold mb-3">Additional Capabilities</h2>
+                <h2 class="fw-bold mb-3">Layanan Tambahan</h2>
                 <p class="lead text-muted">
-                    Specialized services to complement our core offerings and provide comprehensive solutions.
+                    Layanan pendukung untuk melengkapi kebutuhan internet Anda.
                 </p>
             </div>
         </div>
 
         <div class="row g-4">
-            <!-- UI/UX Design -->
+            <!-- Wi-Fi Setup -->
             <div class="col-lg-4 col-md-6">
                 <div class="text-center">
                     <div class="bg-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3 shadow-sm" 
                          style="width: 80px; height: 80px;">
-                        <i class="fas fa-palette fa-2x text-primary"></i>
+                        <i class="fas fa-wifi fa-2x text-primary"></i>
                     </div>
-                    <h5 class="fw-bold mb-3">UI/UX Design</h5>
+                    <h5 class="fw-bold mb-3">Setup Wi-Fi</h5>
                     <p class="text-muted">
-                        User-centered design that creates intuitive and engaging experiences across all platforms.
+                        Konfigurasi jaringan Wi-Fi yang optimal untuk seluruh rumah atau kantor.
                     </p>
                 </div>
             </div>
 
-            <!-- Data Analytics -->
+            <!-- Router Upgrade -->
             <div class="col-lg-4 col-md-6">
                 <div class="text-center">
                     <div class="bg-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3 shadow-sm" 
                          style="width: 80px; height: 80px;">
-                        <i class="fas fa-chart-bar fa-2x text-primary"></i>
+                        <i class="fas fa-router fa-2x text-primary"></i>
                     </div>
-                    <h5 class="fw-bold mb-3">Data Analytics</h5>
+                    <h5 class="fw-bold mb-3">Router Upgrade</h5>
                     <p class="text-muted">
-                        Transform raw data into actionable insights with advanced analytics and visualization tools.
+                        Upgrade router untuk performa Wi-Fi yang lebih baik dan jangkauan lebih luas.
                     </p>
                 </div>
             </div>
 
-            <!-- Cybersecurity -->
+            <!-- Network Monitoring -->
+            <div class="col-lg-4 col-md-6">
+                <div class="text-center">
+                    <div class="bg-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3 shadow-sm" 
+                         style="width: 80px; height: 80px;">
+                        <i class="fas fa-chart-line fa-2x text-primary"></i>
+                    </div>
+                    <h5 class="fw-bold mb-3">Monitoring Jaringan</h5>
+                    <p class="text-muted">
+                        Monitoring kualitas jaringan 24/7 untuk memastikan koneksi selalu stabil.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Technical Support -->
+            <div class="col-lg-4 col-md-6">
+                <div class="text-center">
+                    <div class="bg-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3 shadow-sm" 
+                         style="width: 80px; height: 80px;">
+                        <i class="fas fa-tools fa-2x text-primary"></i>
+                    </div>
+                    <h5 class="fw-bold mb-3">Support Teknis</h5>
+                    <p class="text-muted">
+                        Tim teknis berpengalaman siap membantu troubleshooting dan maintenance.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Fast Installation -->
+            <div class="col-lg-4 col-md-6">
+                <div class="text-center">
+                    <div class="bg-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3 shadow-sm" 
+                         style="width: 80px; height: 80px;">
+                        <i class="fas fa-clock fa-2x text-primary"></i>
+                    </div>
+                    <h5 class="fw-bold mb-3">Instalasi Cepat</h5>
+                    <p class="text-muted">
+                        Proses instalasi dalam 1-3 hari kerja setelah konfirmasi pendaftaran.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Network Security -->
             <div class="col-lg-4 col-md-6">
                 <div class="text-center">
                     <div class="bg-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3 shadow-sm" 
                          style="width: 80px; height: 80px;">
                         <i class="fas fa-shield-alt fa-2x text-primary"></i>
                     </div>
-                    <h5 class="fw-bold mb-3">Cybersecurity</h5>
+                    <h5 class="fw-bold mb-3">Keamanan Jaringan</h5>
                     <p class="text-muted">
-                        Comprehensive security solutions to protect your digital assets and ensure compliance.
-                    </p>
-                </div>
-            </div>
-
-            <!-- API Development -->
-            <div class="col-lg-4 col-md-6">
-                <div class="text-center">
-                    <div class="bg-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3 shadow-sm" 
-                         style="width: 80px; height: 80px;">
-                        <i class="fas fa-plug fa-2x text-primary"></i>
-                    </div>
-                    <h5 class="fw-bold mb-3">API Development</h5>
-                    <p class="text-muted">
-                        RESTful APIs and microservices architecture for seamless system integration and scalability.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Quality Assurance -->
-            <div class="col-lg-4 col-md-6">
-                <div class="text-center">
-                    <div class="bg-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3 shadow-sm" 
-                         style="width: 80px; height: 80px;">
-                        <i class="fas fa-bug fa-2x text-primary"></i>
-                    </div>
-                    <h5 class="fw-bold mb-3">Quality Assurance</h5>
-                    <p class="text-muted">
-                        Comprehensive testing strategies to ensure your applications are bug-free and perform optimally.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Maintenance & Support -->
-            <div class="col-lg-4 col-md-6">
-                <div class="text-center">
-                    <div class="bg-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3 shadow-sm" 
-                         style="width: 80px; height: 80px;">
-                        <i class="fas fa-wrench fa-2x text-primary"></i>
-                    </div>
-                    <h5 class="fw-bold mb-3">Maintenance & Support</h5>
-                    <p class="text-muted">
-                        Ongoing maintenance, updates, and 24/7 support to keep your systems running smoothly.
+                        Firewall dan proteksi keamanan untuk melindungi jaringan dari ancaman cyber.
                     </p>
                 </div>
             </div>
@@ -233,152 +296,88 @@
     </div>
 </section>
 
-<!-- Technology Stack -->
-<section class="py-5">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 mx-auto text-center mb-5">
-                <h2 class="fw-bold mb-3">Technologies We Use</h2>
-                <p class="lead text-muted">
-                    We leverage cutting-edge technologies and frameworks to deliver robust, scalable solutions.
-                </p>
-            </div>
-        </div>
-
-        <div class="row g-4">
-            <!-- Frontend -->
-            <div class="col-lg-3 col-md-6">
-                <div class="card border-0 shadow-sm h-100">
-                    <div class="card-body text-center p-4">
-                        <h5 class="fw-bold mb-3">Frontend</h5>
-                        <ul class="list-unstyled text-muted">
-                            <li class="mb-2">React.js</li>
-                            <li class="mb-2">Vue.js</li>
-                            <li class="mb-2">Angular</li>
-                            <li class="mb-2">TypeScript</li>
-                            <li class="mb-2">Next.js</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Backend -->
-            <div class="col-lg-3 col-md-6">
-                <div class="card border-0 shadow-sm h-100">
-                    <div class="card-body text-center p-4">
-                        <h5 class="fw-bold mb-3">Backend</h5>
-                        <ul class="list-unstyled text-muted">
-                            <li class="mb-2">Laravel</li>
-                            <li class="mb-2">Node.js</li>
-                            <li class="mb-2">Python</li>
-                            <li class="mb-2">Java Spring</li>
-                            <li class="mb-2">.NET Core</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Mobile -->
-            <div class="col-lg-3 col-md-6">
-                <div class="card border-0 shadow-sm h-100">
-                    <div class="card-body text-center p-4">
-                        <h5 class="fw-bold mb-3">Mobile</h5>
-                        <ul class="list-unstyled text-muted">
-                            <li class="mb-2">React Native</li>
-                            <li class="mb-2">Flutter</li>
-                            <li class="mb-2">iOS (Swift)</li>
-                            <li class="mb-2">Android (Kotlin)</li>
-                            <li class="mb-2">Xamarin</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Cloud -->
-            <div class="col-lg-3 col-md-6">
-                <div class="card border-0 shadow-sm h-100">
-                    <div class="card-body text-center p-4">
-                        <h5 class="fw-bold mb-3">Cloud</h5>
-                        <ul class="list-unstyled text-muted">
-                            <li class="mb-2">AWS</li>
-                            <li class="mb-2">Azure</li>
-                            <li class="mb-2">Google Cloud</li>
-                            <li class="mb-2">Docker</li>
-                            <li class="mb-2">Kubernetes</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Process -->
+<!-- Area Coverage -->
 <section class="py-5 bg-light">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 mx-auto text-center mb-5">
-                <h2 class="fw-bold mb-3">Our Development Process</h2>
+                <h2 class="fw-bold mb-3">Area Jangkauan</h2>
                 <p class="lead text-muted">
-                    A proven methodology that ensures successful project delivery from start to finish.
+                    Wilayah Bekasi yang sudah terjangkau layanan internet AlpiNet.
                 </p>
             </div>
         </div>
 
         <div class="row g-4">
-            <!-- Discovery -->
+            <!-- Coverage Area 1 -->
             <div class="col-lg-3 col-md-6">
-                <div class="text-center">
-                    <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" 
-                         style="width: 80px; height: 80px;">
-                        <span class="fw-bold fs-4">1</span>
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body text-center p-4">
+                        <div class="text-primary mb-3">
+                            <i class="fas fa-map-marker-alt fa-2x"></i>
+                        </div>
+                        <h5 class="fw-bold mb-3">Bekasi Timur</h5>
+                        <ul class="list-unstyled text-muted small">
+                            <li>Aren Jaya</li>
+                            <li>Durenjaya</li>
+                            <li>Margahayu</li>
+                            <li>Bekasi Jaya</li>
+                        </ul>
                     </div>
-                    <h5 class="fw-bold mb-3">Discovery</h5>
-                    <p class="text-muted">
-                        Understanding your business needs, goals, and technical requirements through detailed analysis.
-                    </p>
                 </div>
             </div>
 
-            <!-- Planning -->
+            <!-- Coverage Area 2 -->
             <div class="col-lg-3 col-md-6">
-                <div class="text-center">
-                    <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" 
-                         style="width: 80px; height: 80px;">
-                        <span class="fw-bold fs-4">2</span>
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body text-center p-4">
+                        <div class="text-primary mb-3">
+                            <i class="fas fa-map-marker-alt fa-2x"></i>
+                        </div>
+                        <h5 class="fw-bold mb-3">Bekasi Barat</h5>
+                        <ul class="list-unstyled text-muted small">
+                            <li>Bintara</li>
+                            <li>Kranji</li>
+                            <li>Kaliabang</li>
+                            <li>Jakasampurna</li>
+                        </ul>
                     </div>
-                    <h5 class="fw-bold mb-3">Planning</h5>
-                    <p class="text-muted">
-                        Creating detailed project roadmaps, timelines, and architecture design for optimal execution.
-                    </p>
                 </div>
             </div>
 
-            <!-- Development -->
+            <!-- Coverage Area 3 -->
             <div class="col-lg-3 col-md-6">
-                <div class="text-center">
-                    <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" 
-                         style="width: 80px; height: 80px;">
-                        <span class="fw-bold fs-4">3</span>
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body text-center p-4">
+                        <div class="text-primary mb-3">
+                            <i class="fas fa-map-marker-alt fa-2x"></i>
+                        </div>
+                        <h5 class="fw-bold mb-3">Bekasi Utara</h5>
+                        <ul class="list-unstyled text-muted small">
+                            <li>Harapan Jaya</li>
+                            <li>Kaliabang Tengah</li>
+                            <li>Marga Mulya</li>
+                            <li>Perwira</li>
+                        </ul>
                     </div>
-                    <h5 class="fw-bold mb-3">Development</h5>
-                    <p class="text-muted">
-                        Agile development with regular iterations, testing, and client feedback integration.
-                    </p>
                 </div>
             </div>
 
-            <!-- Deployment -->
+            <!-- Coverage Area 4 -->
             <div class="col-lg-3 col-md-6">
-                <div class="text-center">
-                    <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" 
-                         style="width: 80px; height: 80px;">
-                        <span class="fw-bold fs-4">4</span>
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body text-center p-4">
+                        <div class="text-primary mb-3">
+                            <i class="fas fa-map-marker-alt fa-2x"></i>
+                        </div>
+                        <h5 class="fw-bold mb-3">Bekasi Selatan</h5>
+                        <ul class="list-unstyled text-muted small">
+                            <li>Kayuringin Jaya</li>
+                            <li>Pekayon Jaya</li>
+                            <li>Jakasetia</li>
+                            <li>Jatirasa</li>
+                        </ul>
                     </div>
-                    <h5 class="fw-bold mb-3">Deployment</h5>
-                    <p class="text-muted">
-                        Smooth deployment with comprehensive testing, documentation, and ongoing support.
-                    </p>
                 </div>
             </div>
         </div>
@@ -390,16 +389,16 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 mx-auto text-center">
-                <h2 class="fw-bold mb-3">Ready to Start Your Project?</h2>
+                <h2 class="fw-bold mb-3">Siap Untuk Berlangganan?</h2>
                 <p class="lead text-muted mb-4">
-                    Let's discuss how our services can help you achieve your technology goals and transform your business.
+                    Pilih paket yang sesuai dengan kebutuhan Anda dan nikmati internet cepat & stabil dari AlpiNet.
                 </p>
                 <div class="d-flex gap-3 justify-content-center">
                     <a href="{{ url('/contact') }}" class="btn btn-primary-custom btn-lg">
-                        <i class="fas fa-phone me-2"></i>Get Free Consultation
+                        <i class="fas fa-phone me-2"></i>Daftar Sekarang
                     </a>
                     <a href="{{ url('/about') }}" class="btn btn-outline-primary btn-lg">
-                        <i class="fas fa-info-circle me-2"></i>Learn About Us
+                        <i class="fas fa-info-circle me-2"></i>Tentang Kami
                     </a>
                 </div>
             </div>

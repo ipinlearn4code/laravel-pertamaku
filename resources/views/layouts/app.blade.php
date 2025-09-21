@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@yield('title', 'TechCorp - Leading Technology Solutions')</title>
+    <title>@yield('title', 'AlpiNet - Internet Cepat & Stabil di Bekasi')</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">

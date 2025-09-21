@@ -2,7 +2,7 @@
     <div class="container">
         <!-- Brand -->
         <a class="navbar-brand" href="{{ url('/') }}">
-            <i class="fas fa-code-branch me-2"></i>TechCorp
+            <img src="{{ asset('logo.png') }}" alt="AlpiNet Logo" style="height: 30px;" class="me-2">AlpiNet
         </a>
 
         <!-- Mobile menu button -->
@@ -26,7 +26,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{ request()->is('services') ? 'active' : '' }}" href="{{ url('/services') }}">
-                        <i class="fas fa-cogs me-1"></i>Services
+                        <i class="fas fa-wifi me-1"></i>Paket Internet
                     </a>
                 </li>
                 <li class="nav-item">
