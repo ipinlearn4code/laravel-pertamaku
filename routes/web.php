@@ -1,21 +1,24 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\AboutController;
-use App\Http\Controllers\BlogController;
-use App\Http\Controllers\ContactController;
 
-// Home
-Route::get('/', [HomeController::class, 'index'])->name('home');
+// Company Profile Website Routes
+// Home page - displays company overview and introduction
+Route::get('/', function () {
+    return view('home');
+})->name('home');
 
-// About
-Route::get('/about', [AboutController::class, 'index'])->name('about');
+// About page - company history, vision, mission, and team
+Route::get('/about', function () {
+    return view('about');
+})->name('about');
 
-// Blog
-Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
-Route::get('/blog/{id}', [BlogController::class, 'show'])->name('blog.show');
+// Services page - list of services offered by the company
+Route::get('/services', function () {
+    return view('services');
+})->name('services');
 
-// Contact
-Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
-Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+// Contact page - contact information and contact form
+Route::get('/contact', function () {
+    return view('contact');
+})->name('contact');
