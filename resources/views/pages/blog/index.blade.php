@@ -16,7 +16,6 @@
     <div class="space-y-6 mb-8">
         @if($paginatedPosts->count() > 0)
             @foreach($paginatedPosts as $post)
-                @include('components.card', ['post' => $post])
             @endforeach
         @else
             <div class="bg-white rounded-lg shadow-sm p-8 text-center">
@@ -25,47 +24,7 @@
         @endif
     </div>
 
-    <!-- Pagination -->
-    @if($totalPages > 1)
-        <div class="bg-white rounded-lg shadow-sm p-6">
-            <div class="flex justify-between items-center">
-                <div class="text-sm text-gray-700">
-                    Halaman {{ $currentPage }} dari {{ $totalPages }}
-                </div>
-                
-                <div class="flex space-x-2">
-                    @if($currentPage > 1)
-                        <a href="{{ route('blog.index', ['page' => $currentPage - 1]) }}" 
-                           class="bg-gray-200 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-300 transition-colors">
-                            ← Sebelumnya
-                        </a>
-                    @endif
-
-                    @for($i = 1; $i <= $totalPages; $i++)
-                        @if($i == $currentPage)
-                            <span class="bg-blue-600 text-white px-4 py-2 rounded-lg font-semibold">
-                                {{ $i }}
-                            </span>
-                        @elseif($i == 1 || $i == $totalPages || ($i >= $currentPage - 1 && $i <= $currentPage + 1))
-                            <a href="{{ route('blog.index', ['page' => $i]) }}" 
-                               class="bg-gray-200 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-300 transition-colors">
-                                {{ $i }}
-                            </a>
-                        @elseif($i == $currentPage - 2 || $i == $currentPage + 2)
-                            <span class="text-gray-500 px-2">...</span>
-                        @endif
-                    @endfor
-
-                    @if($currentPage < $totalPages)
-                        <a href="{{ route('blog.index', ['page' => $currentPage + 1]) }}" 
-                           class="bg-gray-200 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-300 transition-colors">
-                            Selanjutnya →
-                        </a>
-                    @endif
-                </div>
-            </div>
-        </div>
-    @endif
+    
 
     <!-- Blog Stats -->
     <div class="mt-8 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg p-6 text-center">
