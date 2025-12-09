@@ -7,25 +7,28 @@ use Illuminate\Database\Eloquent\Model;
 class ServiceArea extends Model
 {
     protected $fillable = [
-        'area_name',
-        'is_covered',
-        'coverage_quality',
-        'notes'
+        'area',
+        'name',
+        'district',
+        'rt',
+        'rw',
+        'status',
+        'description'
     ];
 
     protected $casts = [
-        'is_covered' => 'boolean'
+        'status' => 'string'
     ];
 
-    // Scope for covered areas
-    public function scopeCovered($query)
+    // Scope for active areas
+    public function scopeActive($query)
     {
-        return $query->where('is_covered', true);
+        return $query->where('status', 'active');
     }
 
-    // Scope for quality levels
-    public function scopeQuality($query, $quality)
+    // Scope for status filter
+    public function scopeStatus($query, $status)
     {
-        return $query->where('coverage_quality', $quality);
+        return $query->where('status', $status);
     }
 }

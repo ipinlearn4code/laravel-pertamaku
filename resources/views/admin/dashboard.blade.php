@@ -32,112 +32,78 @@
             <!-- Stats Cards -->
             <div class="row g-4 mb-5">
                 <div class="col-lg-3 col-md-6">
-                    <div class="card border-0 shadow-sm">
-                        <div class="card-body">
-                            <div class="d-flex align-items-center">
-                                <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3"
-                                    style="width: 50px; height: 50px;">
-                                    <i class="fas fa-newspaper"></i>
-                                </div>
-                                <div>
-                                    <h3 class="fw-bold mb-0">{{ \App\Models\BlogPost::count() }}</h3>
-                                    <small class="text-muted">Total Posts</small>
+                    <div class="card border-0 shadow-sm h-100">
+                        <a href="{{ route('admin.blog.index') }}" class="text-decoration-none text-dark">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+                                    <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3"
+                                        style="width: 50px; height: 50px;">
+                                        <i class="fas fa-newspaper"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="fw-bold mb-0">{{ \App\Models\BlogPost::count() }}</h3>
+                                        <small class="text-muted">Total Posts</small>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 </div>
 
                 <div class="col-lg-3 col-md-6">
-                    <div class="card border-0 shadow-sm">
-                        <div class="card-body">
-                            <div class="d-flex align-items-center">
-                                <div class="bg-success text-white rounded-circle d-flex align-items-center justify-content-center me-3"
-                                    style="width: 50px; height: 50px;">
-                                    <i class="fas fa-wifi"></i>
-                                </div>
-                                <div>
-                                    <h3 class="fw-bold mb-0">{{ \App\Models\InternetPackage::count() }}</h3>
-                                    <small class="text-muted">Paket Internet</small>
+                    <div class="card border-0 shadow-sm h-100">
+                        <a href="{{ route('admin.packages.index') }}" class="text-decoration-none text-dark">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+                                    <div class="bg-success text-white rounded-circle d-flex align-items-center justify-content-center me-3"
+                                        style="width: 50px; height: 50px;">
+                                        <i class="fas fa-wifi"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="fw-bold mb-0">{{ \App\Models\InternetPackage::count() }}</h3>
+                                        <small class="text-muted">Paket Internet</small>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 </div>
 
                 <div class="col-lg-3 col-md-6">
-                    <div class="card border-0 shadow-sm">
-                        <div class="card-body">
-                            <div class="d-flex align-items-center">
-                                <div class="bg-warning text-white rounded-circle d-flex align-items-center justify-content-center me-3"
-                                    style="width: 50px; height: 50px;">
-                                    <i class="fas fa-users"></i>
-                                </div>
-                                <div>
-                                    <h3 class="fw-bold mb-0">{{ \App\Models\ContactSubmission::count() }}</h3>
-                                    <small class="text-muted">Pendaftaran</small>
+                    <div class="card border-0 shadow-sm h-100">
+                        <a href="{{ route('admin.submissions.index') }}" class="text-decoration-none text-dark">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+                                    <div class="bg-warning text-white rounded-circle d-flex align-items-center justify-content-center me-3"
+                                        style="width: 50px; height: 50px;">
+                                        <i class="fas fa-users"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="fw-bold mb-0">{{ \App\Models\ContactSubmission::count() }}</h3>
+                                        <small class="text-muted">Pendaftaran</small>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 </div>
 
                 <div class="col-lg-3 col-md-6">
-                    <div class="card border-0 shadow-sm">
-                        <div class="card-body">
-                            <div class="d-flex align-items-center">
-                                <div class="bg-info text-white rounded-circle d-flex align-items-center justify-content-center me-3"
-                                    style="width: 50px; height: 50px;">
-                                    <i class="fas fa-map-marker-alt"></i>
+                    <div class="card border-0 shadow-sm h-100">
+                        <a href="{{ route('admin.service-areas.index') }}" class="text-decoration-none text-dark">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+                                    <div class="bg-info text-white rounded-circle d-flex align-items-center justify-content-center me-3"
+                                        style="width: 50px; height: 50px;">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="fw-bold mb-0">{{ \App\Models\ServiceArea::count() }}</h3>
+                                        <small class="text-muted">Area Layanan</small>
+                                    </div>
                                 </div>
-                                <div>
-                                    <h3 class="fw-bold mb-0">{{ \App\Models\ServiceArea::count() }}</h3>
-                                    <small class="text-muted">Area Layanan</small>
-                                </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Quick Actions -->
-            <div class="row g-4 mb-5">
-                <div class="col-md-4">
-                    <div class="card border-0 shadow-sm h-100">
-                        <div class="card-body text-center">
-                            <div class="text-primary mb-3">
-                                <i class="fas fa-wifi fa-3x"></i>
-                            </div>
-                            <h5 class="fw-bold">Paket Internet</h5>
-                            <p class="text-muted">Kelola paket dan harga internet yang ditawarkan</p>
-                            <a href="{{ route('admin.packages.index') }}" class="btn btn-primary">Kelola Paket</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="card border-0 shadow-sm h-100">
-                        <div class="card-body text-center">
-                            <div class="text-warning mb-3">
-                                <i class="fas fa-user-plus fa-3x"></i>
-                            </div>
-                            <h5 class="fw-bold">Pendaftaran</h5>
-                            <p class="text-muted">Lihat dan kelola pendaftaran dari calon pelanggan</p>
-                            <a href="{{ route('admin.submissions.index') }}" class="btn btn-warning">Lihat Pendaftaran</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="card border-0 shadow-sm h-100">
-                        <div class="card-body text-center">
-                            <div class="text-info mb-3">
-                                <i class="fas fa-phone fa-3x"></i>
-                            </div>
-                            <h5 class="fw-bold">Kontak Info</h5>
-                            <p class="text-muted">Update informasi kontak dan alamat perusahaan</p>
-                            <a href="{{ route('admin.contact-info.index') }}" class="btn btn-info">Kelola Kontak</a>
-                        </div>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -247,5 +213,4 @@
         </div>
     </div>
 </section>
-    </section>
 @endsection

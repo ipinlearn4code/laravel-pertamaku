@@ -11,9 +11,26 @@ class ServiceAreaController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $serviceAreas = ServiceArea::latest()->paginate(10);
+        $query = ServiceArea::query();
+        
+        // Search filter
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $query->where(function($q) use ($search) {
+                $q->where('area', 'like', "%{$search}%")
+                  ->orWhere('name', 'like', "%{$search}%")
+                  ->orWhere('district', 'like', "%{$search}%");
+            });
+        }
+        
+        // Status filter
+        if ($request->filled('status')) {
+            $query->where('status', $request->status);
+        }
+        
+        $serviceAreas = $query->latest()->paginate(10);
         return view('admin.service-areas.index', compact('serviceAreas'));
     }
 
@@ -31,17 +48,23 @@ class ServiceAreaController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'area_name' => 'required|string|max:100',
-            'is_covered' => 'boolean',
-            'coverage_quality' => 'required|in:excellent,good,fair,limited',
-            'notes' => 'nullable|string'
+            'area' => 'required|string|max:100',
+            'name' => 'nullable|string|max:255',
+            'district' => 'nullable|string|max:100',
+            'rt' => 'nullable|string|max:10',
+            'rw' => 'nullable|string|max:10',
+            'status' => 'required|in:active,planned,maintenance',
+            'description' => 'nullable|string'
         ]);
 
         ServiceArea::create([
-            'area_name' => $request->area_name,
-            'is_covered' => $request->boolean('is_covered', true),
-            'coverage_quality' => $request->coverage_quality,
-            'notes' => $request->notes
+            'area' => $request->area,
+            'name' => $request->name,
+            'district' => $request->district,
+            'rt' => $request->rt,
+            'rw' => $request->rw,
+            'status' => $request->status,
+            'description' => $request->description
         ]);
 
         return redirect()->route('admin.service-areas.index')
@@ -62,17 +85,23 @@ class ServiceAreaController extends Controller
     public function update(Request $request, ServiceArea $serviceArea)
     {
         $request->validate([
-            'area_name' => 'required|string|max:100',
-            'is_covered' => 'boolean',
-            'coverage_quality' => 'required|in:excellent,good,fair,limited',
-            'notes' => 'nullable|string'
+            'area' => 'required|string|max:100',
+            'name' => 'nullable|string|max:255',
+            'district' => 'nullable|string|max:100',
+            'rt' => 'nullable|string|max:10',
+            'rw' => 'nullable|string|max:10',
+            'status' => 'required|in:active,planned,maintenance',
+            'description' => 'nullable|string'
         ]);
 
         $serviceArea->update([
-            'area_name' => $request->area_name,
-            'is_covered' => $request->boolean('is_covered', true),
-            'coverage_quality' => $request->coverage_quality,
-            'notes' => $request->notes
+            'area' => $request->area,
+            'name' => $request->name,
+            'district' => $request->district,
+            'rt' => $request->rt,
+            'rw' => $request->rw,
+            'status' => $request->status,
+            'description' => $request->description
         ]);
 
         return redirect()->route('admin.service-areas.index')
