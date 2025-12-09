@@ -37,6 +37,7 @@ class BlogController extends Controller
 
         BlogPost::create([
             'title' => $request->title,
+            'slug' => Str::slug($request->title),
             'summary' => $request->summary,
             'content' => $request->input('content'),
             'image' => $imageData,
@@ -96,46 +97,19 @@ class BlogController extends Controller
      */
     private function compressAndStoreImage($file)
     {
-        // Get file info
-        $originalImage = imagecreatefromstring(file_get_contents($file));
-        
-        // Get original dimensions
-        $originalWidth = imagesx($originalImage);
-        $originalHeight = imagesy($originalImage);
-        
-        // Set maximum dimensions
-        $maxWidth = 800;
-        $maxHeight = 600;
-        
-        // Calculate new dimensions
-        $ratio = min($maxWidth / $originalWidth, $maxHeight / $originalHeight);
-        $newWidth = $originalWidth * $ratio;
-        $newHeight = $originalHeight * $ratio;
-        
-        // Create new image
-        $newImage = imagecreatetruecolor($newWidth, $newHeight);
-        
-        // Preserve transparency for PNG/GIF
-        imagealphablending($newImage, false);
-        imagesavealpha($newImage, true);
-        
-        // Resize image
-        imagecopyresampled($newImage, $originalImage, 0, 0, 0, 0, $newWidth, $newHeight, $originalWidth, $originalHeight);
-        
-        // Start output buffering
-        ob_start();
-        
-        // Output as JPEG with quality 80 for compression
-        imagejpeg($newImage, null, 80);
-        
-        // Get the binary data
-        $imageData = ob_get_contents();
-        
-        // Clean up
-        ob_end_clean();
-        imagedestroy($originalImage);
-        imagedestroy($newImage);
-        
-        return $imageData;
+        try {
+            // Simple approach: just get file contents and encode to base64
+            // to avoid binary encoding issues with database
+            $fileContents = file_get_contents($file->getRealPath());
+            
+            // For now, return base64 encoded string to avoid UTF-8 issues
+            // This is safer for database storage
+            return base64_encode($fileContents);
+            
+        } catch (\Exception $e) {
+            // Log error for debugging
+            \Log::error('Image compression failed: ' . $e->getMessage());
+            return null;
+        }
     }
 }

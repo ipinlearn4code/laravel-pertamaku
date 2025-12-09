@@ -33,7 +33,7 @@
                                 <label for="image" class="form-label">Featured Image</label>
                                 @if($blog->image)
                                     <div class="mb-2">
-                                        <img src="data:image/jpeg;base64,{{ base64_encode($blog->image) }}" 
+                                        <img src="data:image/jpeg;base64,{{ $blog->image }}" 
                                              alt="Current image" class="img-thumbnail" style="max-height: 200px;">
                                         <div class="form-text">Current image (upload new image to replace)</div>
                                     </div>

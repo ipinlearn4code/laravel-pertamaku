@@ -281,7 +281,7 @@
                 <div class="carousel-slide {{ $index === 0 ? 'active' : '' }}" data-index="{{ $index }}">
                     <div class="card border-0 shadow-lg">
                         @if($post->image)
-                            <img src="data:image/jpeg;base64,{{ base64_encode($post->image) }}" 
+                            <img src="data:image/jpeg;base64,{{ $post->image }}" 
                                  class="card-img-top" 
                                  style="height: 250px; object-fit: cover;" 
                                  alt="{{ $post->title }}">
