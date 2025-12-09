@@ -309,100 +309,60 @@
         </div>
 
         <div class="row g-4">
-            <!-- Coverage Area 1 -->
-            <div class="col-lg-3 col-md-6">
-                <div class="card border-0 shadow-sm h-100">
-                    <div class="card-body text-center p-4">
-                        <div class="text-primary mb-3">
-                            <i class="fas fa-map-marker-alt fa-2x"></i>
+            @if($serviceAreas->isNotEmpty())
+                @foreach($serviceAreas->take(4) as $district => $areas)
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-body text-center p-4">
+                                <div class="text-primary mb-3">
+                                    <i class="fas fa-map-marker-alt fa-2x"></i>
+                                </div>
+                                <h5 class="fw-bold mb-3">{{ $district ?: 'Area Bekasi' }}</h5>
+                                <ul class="list-unstyled text-muted small">
+                                    @foreach($areas->take(4) as $area)
+                                        <li>{{ $area->area }}</li>
+                                    @endforeach
+                                </ul>
+                                @if($areas->count() > 4)
+                                    <small class="text-muted">dan {{ $areas->count() - 4 }} area lainnya...</small>
+                                @endif
+                            </div>
                         </div>
-                        <h5 class="fw-bold mb-3">Bekasi Timur</h5>
-                        <ul class="list-unstyled text-muted small">
-                            <li>Aren Jaya</li>
-                            <li>Durenjaya</li>
-                            <li>Margahayu</li>
-                            <li>Bekasi Jaya</li>
-                        </ul>
                     </div>
+                @endforeach
+            @else
+                <div class="col-12 text-center py-5">
+                    <i class="fas fa-map-marker-alt fa-3x text-muted mb-3"></i>
+                    <h5 class="text-muted">Area coverage sedang diperbarui</h5>
+                    <p class="text-muted">Hubungi kami untuk informasi ketersediaan di area Anda</p>
                 </div>
-            </div>
-
-            <!-- Coverage Area 2 -->
-            <div class="col-lg-3 col-md-6">
-                <div class="card border-0 shadow-sm h-100">
-                    <div class="card-body text-center p-4">
-                        <div class="text-primary mb-3">
-                            <i class="fas fa-map-marker-alt fa-2x"></i>
-                        </div>
-                        <h5 class="fw-bold mb-3">Bekasi Barat</h5>
-                        <ul class="list-unstyled text-muted small">
-                            <li>Bintara</li>
-                            <li>Kranji</li>
-                            <li>Kaliabang</li>
-                            <li>Jakasampurna</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Coverage Area 3 -->
-            <div class="col-lg-3 col-md-6">
-                <div class="card border-0 shadow-sm h-100">
-                    <div class="card-body text-center p-4">
-                        <div class="text-primary mb-3">
-                            <i class="fas fa-map-marker-alt fa-2x"></i>
-                        </div>
-                        <h5 class="fw-bold mb-3">Bekasi Utara</h5>
-                        <ul class="list-unstyled text-muted small">
-                            <li>Harapan Jaya</li>
-                            <li>Kaliabang Tengah</li>
-                            <li>Marga Mulya</li>
-                            <li>Perwira</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Coverage Area 4 -->
-            <div class="col-lg-3 col-md-6">
-                <div class="card border-0 shadow-sm h-100">
-                    <div class="card-body text-center p-4">
-                        <div class="text-primary mb-3">
-                            <i class="fas fa-map-marker-alt fa-2x"></i>
-                        </div>
-                        <h5 class="fw-bold mb-3">Bekasi Selatan</h5>
-                        <ul class="list-unstyled text-muted small">
-                            <li>Kayuringin Jaya</li>
-                            <li>Pekayon Jaya</li>
-                            <li>Jakasetia</li>
-                            <li>Jatirasa</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+            @endif
         </div>
-    </div>
-</section>
 
-<!-- Call to Action -->
-<section class="py-5">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 mx-auto text-center">
-                <h2 class="fw-bold mb-3">Siap Untuk Berlangganan?</h2>
-                <p class="lead text-muted mb-4">
-                    Pilih paket yang sesuai dengan kebutuhan Anda dan nikmati internet cepat & stabil dari AlpiNet.
-                </p>
-                <div class="d-flex gap-3 justify-content-center">
-                    <a href="{{ url('/contact') }}" class="btn btn-primary-custom btn-lg">
-                        <i class="fas fa-phone me-2"></i>Daftar Sekarang
-                    </a>
-                    <a href="{{ url('/about') }}" class="btn btn-outline-primary btn-lg">
-                        <i class="fas fa-info-circle me-2"></i>Tentang Kami
+        @if($serviceAreas->isNotEmpty())
+            <div class="row mt-4">
+                <div class="col-12 text-center">
+                    <p class="text-muted">
+                        <i class="fas fa-info-circle me-2"></i>
+                        Total {{ $serviceAreas->flatten()->count() }} area sudah terjangkau layanan AlpiNet
+                    </p>
+                    <a href="{{ url('/contact') }}" class="btn btn-outline-primary">
+                        <i class="fas fa-phone me-2"></i>Cek Ketersediaan di Area Anda
                     </a>
                 </div>
             </div>
-        </div>
+        @endif
     </div>
 </section>
+
+@include('partials.cta-section', [
+    'title' => 'Siap Untuk Berlangganan?',
+    'description' => 'Pilih paket yang sesuai dengan kebutuhan Anda dan nikmati internet cepat & stabil dari AlpiNet.',
+    'primaryUrl' => url('/contact'),
+    'primaryIcon' => 'fas fa-phone',
+    'primaryText' => 'Daftar Sekarang',
+    'secondaryUrl' => url('/about'),
+    'secondaryIcon' => 'fas fa-info-circle',
+    'secondaryText' => 'Tentang Kami'
+])
 @endsection

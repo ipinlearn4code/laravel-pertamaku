@@ -26,6 +26,12 @@ class ServiceArea extends Model
         return $query->where('status', 'active');
     }
 
+    // Scope for covered areas (alias for active)
+    public function scopeCovered($query)
+    {
+        return $query->where('status', 'active');
+    }
+
     // Scope for status filter
     public function scopeStatus($query, $status)
     {

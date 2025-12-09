@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\InternetPackage;
 use App\Models\ContactInfo;
+use App\Models\ServiceArea;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -20,8 +21,9 @@ class PageController extends Controller
     {
         $packages = InternetPackage::active()->get();
         $contactInfo = ContactInfo::active()->get()->groupBy('type');
+        $serviceAreas = ServiceArea::active()->get()->groupBy('district');
         
-        return view('services', compact('packages', 'contactInfo'));
+        return view('services', compact('packages', 'contactInfo', 'serviceAreas'));
     }
 
     public function about()

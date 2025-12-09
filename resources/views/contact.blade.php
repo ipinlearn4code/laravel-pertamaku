@@ -263,24 +263,34 @@
                     <div class="card-body p-4">
                         <h5 class="fw-bold mb-3">Area Jangkauan</h5>
                         <div class="row g-2">
-                            @foreach($serviceAreas->chunk(2) as $areaChunk)
-                                @foreach($areaChunk as $area)
+                            @if($serviceAreas->isNotEmpty())
+                                @foreach($serviceAreas->take(8) as $area)
                                 <div class="col-6">
                                     <span class="badge w-100 
-                                        @if($area->coverage_quality == 'excellent') bg-success
-                                        @elseif($area->coverage_quality == 'good') bg-primary
-                                        @elseif($area->coverage_quality == 'fair') bg-warning text-dark
+                                        @if($area->status == 'active') bg-success
+                                        @elseif($area->status == 'planned') bg-warning text-dark
+                                        @elseif($area->status == 'maintenance') bg-danger
                                         @else bg-light text-dark
                                         @endif">
-                                        {{ $area->area_name }}
+                                        {{ $area->area }}
                                     </span>
                                 </div>
                                 @endforeach
-                            @endforeach
+                            @else
+                                <div class="col-12">
+                                    <p class="text-muted text-center mb-0">
+                                        <i class="fas fa-map-marker-alt me-2"></i>
+                                        Area coverage sedang diperbarui
+                                    </p>
+                                </div>
+                            @endif
                         </div>
                         <div class="mt-3">
                             <small class="text-muted">
                                 <i class="fas fa-info-circle me-1"></i>
+                                @if($serviceAreas->isNotEmpty())
+                                    {{ $serviceAreas->count() }} area sudah terjangkau. 
+                                @endif
                                 Cek ketersediaan di lokasi Anda dengan menghubungi kami
                             </small>
                         </div>

@@ -273,26 +273,5 @@
     </div>
 </section>
 
-<!-- Call to Action -->
-<section class="py-5">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 mx-auto text-center">
-                <h2 class="fw-bold mb-3">Siap Bergabung dengan AlpiNet?</h2>
-                <p class="lead text-muted mb-4">
-                    Bergabunglah dengan ribuan pelanggan yang telah merasakan kualitas 
-                    layanan internet AlpiNet di wilayah Bekasi.
-                </p>
-                <div class="d-flex gap-3 justify-content-center">
-                    <a href="{{ url('/services') }}" class="btn btn-primary-custom btn-lg">
-                        <i class="fas fa-wifi me-2"></i>Lihat Paket Internet
-                    </a>
-                    <a href="{{ url('/contact') }}" class="btn btn-outline-primary btn-lg">
-                        <i class="fas fa-phone me-2"></i>Hubungi Kami
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+@include('partials.cta-section')
 @endsection
