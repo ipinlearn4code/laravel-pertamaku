@@ -26,8 +26,7 @@
             <div class="col-lg-7">
                 <div class="card border-0 shadow-sm">
                     <div class="card-body p-5">
-                        <h3 class="fw-bold mb-4">Daftar Paket Internet</h3>
-                        <p class="text-muted mb-4">
+                        <p class="text-muted mb-5">
                             Isi formulir di bawah dan kami akan menghubungi Anda dalam 24 jam untuk proses instalasi.
                         </p>
 
@@ -145,7 +144,7 @@
                                 <!-- Submit Button -->
                                 <div class="col-12">
                                     <button type="submit" class="btn btn-primary-custom btn-lg w-100">
-                                        <i class="fas fa-paper-plane me-2"></i>Kirim Pendaftaran
+                                        <i class="fas fa-paper-plane me-2"></i>Kirim
                                     </button>
                                 </div>
                             </div>

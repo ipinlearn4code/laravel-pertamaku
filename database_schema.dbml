@@ -1,0 +1,176 @@
+// AlpiNet Company Profile Database Schema
+// Laravel Project - Database Markup Language (DBML)
+// Use this file with dbdiagram.io to generate ERD
+
+Project AlpiNet_Database {
+  database_type: 'MySQL'
+  Note: '''
+    # AlpiNet Company Profile Database
+    Laravel-based internet service provider company website
+    with blog, package management, and customer interactions
+  '''
+}
+
+// Core Authentication Tables
+Table users {
+  id bigint [pk, increment]
+  name varchar(255) [not null]
+  email varchar(255) [unique, not null]
+  email_verified_at timestamp [null]
+  password varchar(255) [not null]
+  remember_token varchar(100) [null]
+  created_at timestamp [null]
+  updated_at timestamp [null]
+  
+  Note: 'User accounts for authentication and blog authoring'
+}
+
+Table password_reset_tokens {
+  email varchar(255) [pk]
+  token varchar(255) [not null]
+  created_at timestamp [null]
+  
+  Note: 'Password reset functionality'
+}
+
+Table sessions {
+  id varchar(255) [pk]
+  user_id bigint [null]
+  ip_address varchar(45) [null]
+  user_agent text [null]
+  payload longtext [not null]
+  last_activity int [not null]
+  
+  Note: 'User session management'
+}
+
+// Blog System Tables
+Table blog_posts {
+  id bigint [pk, increment]
+  title varchar(255) [not null]
+  slug varchar(255) [unique, not null]
+  summary text [not null]
+  content longtext [not null]
+  image longtext [null]
+  author_id bigint [not null, default: 1]
+  published_at timestamp [null]
+  is_published boolean [not null, default: true]
+  created_at timestamp [null]
+  updated_at timestamp [null]
+  
+  indexes {
+    (is_published, published_at)
+    slug
+  }
+  
+  Note: 'Blog posts for company news and articles'
+}
+
+// Internet Package Management
+Table internet_packages {
+  id bigint [pk, increment]
+  name varchar(100) [not null]
+  speed_mbps int [not null]
+  price decimal(10,2) [not null]
+  description text [null]
+  features json [null]
+  is_popular boolean [not null, default: false]
+  is_active boolean [not null, default: true]
+  created_at timestamp [null]
+  updated_at timestamp [null]
+  
+  Note: 'Internet service packages offered by the company'
+}
+
+// Customer Interaction Tables
+Table contact_submissions {
+  id bigint [pk, increment]
+  name varchar(255) [not null]
+  phone varchar(20) [not null]
+  email varchar(255) [null]
+  whatsapp varchar(20) [null]
+  address text [not null]
+  package_id bigint [null]
+  installation_time enum('weekday-morning', 'weekday-afternoon', 'weekend', 'flexible') [null]
+  notes text [null]
+  newsletter_consent boolean [not null, default: false]
+  status enum('pending', 'contacted', 'scheduled', 'completed') [not null, default: 'pending']
+  created_at timestamp [null]
+  updated_at timestamp [null]
+  
+  Note: 'Customer inquiries and service requests'
+}
+
+Table testimonials {
+  id bigint [pk, increment]
+  name varchar(255) [not null]
+  location varchar(255) [not null]
+  message text [not null]
+  email varchar(255) [null]
+  phone varchar(255) [null]
+  is_published boolean [not null, default: false]
+  published_at timestamp [null]
+  created_at timestamp [null]
+  updated_at timestamp [null]
+  
+  Note: 'Customer testimonials and reviews'
+}
+
+// Company Information Tables
+Table contact_info {
+  id bigint [pk, increment]
+  type enum('address', 'phone', 'email', 'whatsapp', 'hours') [not null]
+  label varchar(100) [null]
+  value text [not null]
+  is_primary boolean [not null, default: false]
+  is_active boolean [not null, default: true]
+  created_at timestamp [null]
+  updated_at timestamp [null]
+  
+  Note: 'Company contact information (phone, address, etc.)'
+}
+
+Table service_areas {
+  id bigint [pk, increment]
+  area varchar(100) [not null]
+  name varchar(255) [null]
+  district varchar(100) [null]
+  rt varchar(10) [null]
+  rw varchar(10) [null]
+  status enum('active', 'planned', 'maintenance') [not null, default: 'active']
+  description text [null]
+  created_at timestamp [null]
+  updated_at timestamp [null]
+  
+  Note: 'Service coverage areas in Bekasi'
+}
+
+// Relationships Documentation
+Ref: blog_posts.author_id > users.id [delete: cascade]
+Ref: contact_submissions.package_id > internet_packages.id [delete: set null]
+Ref: sessions.user_id > users.id [delete: cascade]
+
+// Table Groups for better visualization
+TableGroup "Authentication & Users" {
+  users
+  password_reset_tokens
+  sessions
+}
+
+TableGroup "Blog System" {
+  blog_posts
+}
+
+TableGroup "Internet Packages" {
+  internet_packages
+  contact_submissions
+}
+
+TableGroup "Customer Feedback" {
+  testimonials
+}
+
+TableGroup "Company Info" {
+  contact_info
+  service_areas
+}
