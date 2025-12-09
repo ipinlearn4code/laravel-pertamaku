@@ -31,85 +31,112 @@
                             Isi formulir di bawah dan kami akan menghubungi Anda dalam 24 jam untuk proses instalasi.
                         </p>
 
-                        <form action="#" method="POST" class="needs-validation" novalidate>
+                        @if(session('success'))
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                {{ session('success') }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                            </div>
+                        @endif
+
+                        <form action="{{ route('contact.store') }}" method="POST" class="needs-validation" novalidate>
                             @csrf
                             <div class="row g-3">
                                 <!-- Name Fields -->
                                 <div class="col-md-6">
-                                    <label for="nama_lengkap" class="form-label">Nama Lengkap *</label>
-                                    <input type="text" class="form-control" id="nama_lengkap" name="nama_lengkap" required>
-                                    <div class="invalid-feedback">
-                                        Silakan masukkan nama lengkap Anda.
-                                    </div>
+                                    <label for="name" class="form-label">Nama Lengkap *</label>
+                                    <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name') }}" required>
+                                    @error('name')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @else
+                                        <div class="invalid-feedback">Silakan masukkan nama lengkap Anda.</div>
+                                    @enderror
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="no_telepon" class="form-label">No. Telepon *</label>
-                                    <input type="tel" class="form-control" id="no_telepon" name="no_telepon" required>
-                                    <div class="invalid-feedback">
-                                        Silakan masukkan nomor telepon yang valid.
-                                    </div>
+                                    <label for="phone" class="form-label">No. Telepon *</label>
+                                    <input type="tel" class="form-control @error('phone') is-invalid @enderror" id="phone" name="phone" value="{{ old('phone') }}" required>
+                                    @error('phone')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @else
+                                        <div class="invalid-feedback">Silakan masukkan nomor telepon yang valid.</div>
+                                    @enderror
                                 </div>
 
                                 <!-- Contact Fields -->
                                 <div class="col-md-6">
                                     <label for="email" class="form-label">Email</label>
-                                    <input type="email" class="form-control" id="email" name="email">
+                                    <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email') }}">
+                                    @error('email')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="col-md-6">
                                     <label for="whatsapp" class="form-label">WhatsApp</label>
-                                    <input type="tel" class="form-control" id="whatsapp" name="whatsapp" placeholder="Nomor WhatsApp">
+                                    <input type="tel" class="form-control @error('whatsapp') is-invalid @enderror" id="whatsapp" name="whatsapp" placeholder="Nomor WhatsApp" value="{{ old('whatsapp') }}">
+                                    @error('whatsapp')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
 
                                 <!-- Address -->
                                 <div class="col-12">
-                                    <label for="alamat" class="form-label">Alamat Lengkap *</label>
-                                    <textarea class="form-control" id="alamat" name="alamat" rows="3" 
-                                              placeholder="Jl. Nama Jalan, No. Rumah, RT/RW, Kelurahan, Kecamatan, Bekasi" required></textarea>
-                                    <div class="invalid-feedback">
-                                        Silakan masukkan alamat lengkap untuk instalasi.
-                                    </div>
+                                    <label for="address" class="form-label">Alamat Lengkap *</label>
+                                    <textarea class="form-control @error('address') is-invalid @enderror" id="address" name="address" rows="3" 
+                                              placeholder="Jl. Nama Jalan, No. Rumah, RT/RW, Kelurahan, Kecamatan, Bekasi" required>{{ old('address') }}</textarea>
+                                    @error('address')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @else
+                                        <div class="invalid-feedback">Silakan masukkan alamat lengkap untuk instalasi.</div>
+                                    @enderror
                                 </div>
 
                                 <!-- Package Selection -->
                                 <div class="col-md-6">
-                                    <label for="paket" class="form-label">Pilih Paket Internet *</label>
-                                    <select class="form-select" id="paket" name="paket" required>
+                                    <label for="package_id" class="form-label">Pilih Paket Internet *</label>
+                                    <select class="form-select @error('package_id') is-invalid @enderror" id="package_id" name="package_id" required>
                                         <option value="">Pilih paket</option>
-                                        <option value="basic">Basic - 10 Mbps (Rp 150.000/bulan)</option>
-                                        <option value="family">Family - 20 Mbps (Rp 250.000/bulan)</option>
-                                        <option value="premium">Premium - 50 Mbps (Rp 400.000/bulan)</option>
-                                        <option value="student">Student - 15 Mbps (Rp 180.000/bulan)</option>
-                                        <option value="business">Business - 100 Mbps (Rp 750.000/bulan)</option>
+                                        @foreach($packages as $package)
+                                        <option value="{{ $package->id }}" {{ old('package_id') == $package->id ? 'selected' : '' }}>
+                                            {{ $package->name }} - {{ $package->speed_mbps }} Mbps ({{ $package->formatted_price }}/bulan)
+                                        </option>
+                                        @endforeach
                                     </select>
-                                    <div class="invalid-feedback">
-                                        Silakan pilih paket internet.
-                                    </div>
+                                    @error('package_id')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @else
+                                        <div class="invalid-feedback">Silakan pilih paket internet.</div>
+                                    @enderror
                                 </div>
 
                                 <!-- Installation Preference -->
                                 <div class="col-md-6">
-                                    <label for="waktu_instalasi" class="form-label">Waktu Instalasi Preferensi</label>
-                                    <select class="form-select" id="waktu_instalasi" name="waktu_instalasi">
+                                    <label for="installation_time" class="form-label">Waktu Instalasi Preferensi</label>
+                                    <select class="form-select @error('installation_time') is-invalid @enderror" id="installation_time" name="installation_time">
                                         <option value="">Pilih waktu</option>
-                                        <option value="weekday-morning">Hari kerja - Pagi (08:00-12:00)</option>
-                                        <option value="weekday-afternoon">Hari kerja - Siang (13:00-17:00)</option>
-                                        <option value="weekend">Akhir pekan</option>
-                                        <option value="flexible">Fleksibel</option>
+                                        <option value="weekday-morning" {{ old('installation_time') == 'weekday-morning' ? 'selected' : '' }}>Hari kerja - Pagi (08:00-12:00)</option>
+                                        <option value="weekday-afternoon" {{ old('installation_time') == 'weekday-afternoon' ? 'selected' : '' }}>Hari kerja - Siang (13:00-17:00)</option>
+                                        <option value="weekend" {{ old('installation_time') == 'weekend' ? 'selected' : '' }}>Akhir pekan</option>
+                                        <option value="flexible" {{ old('installation_time') == 'flexible' ? 'selected' : '' }}>Fleksibel</option>
                                     </select>
+                                    @error('installation_time')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
 
                                 <!-- Message -->
                                 <div class="col-12">
-                                    <label for="catatan" class="form-label">Catatan Tambahan</label>
-                                    <textarea class="form-control" id="catatan" name="catatan" rows="3" 
-                                              placeholder="Pertanyaan khusus, request instalasi, atau informasi tambahan..."></textarea>
+                                    <label for="notes" class="form-label">Catatan Tambahan</label>
+                                    <textarea class="form-control @error('notes') is-invalid @enderror" id="notes" name="notes" rows="3" 
+                                              placeholder="Pertanyaan khusus, request instalasi, atau informasi tambahan...">{{ old('notes') }}</textarea>
+                                    @error('notes')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
 
                                 <!-- Newsletter -->
                                 <div class="col-12">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="newsletter" name="newsletter" value="1">
-                                        <label class="form-check-label" for="newsletter">
+                                        <input class="form-check-input" type="checkbox" id="newsletter_consent" name="newsletter_consent" value="1" {{ old('newsletter_consent') ? 'checked' : '' }}>
+                                        <label class="form-check-label" for="newsletter_consent">
                                             Saya ingin mendapatkan informasi promo dan update dari AlpiNet
                                         </label>
                                     </div>
@@ -134,65 +161,84 @@
                     <div class="card-body p-4">
                         <h4 class="fw-bold mb-4">Informasi Kontak</h4>
                         
-                        <div class="d-flex align-items-center mb-3">
-                            <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" 
-                                 style="width: 50px; height: 50px;">
-                                <i class="fas fa-map-marker-alt"></i>
+                        @if(isset($contactInfo['address']))
+                            @foreach($contactInfo['address'] as $address)
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" 
+                                     style="width: 50px; height: 50px;">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div>
+                                    <h6 class="fw-bold mb-1">{{ $address->label ?? 'Alamat' }}</h6>
+                                    <p class="text-muted mb-0">{!! nl2br($address->value) !!}</p>
+                                </div>
                             </div>
-                            <div>
-                                <h6 class="fw-bold mb-1">Alamat Kantor</h6>
-                                <p class="text-muted mb-0">Jl. Raya Bekasi No. 123<br>Bekasi Timur, Bekasi 17113</p>
-                            </div>
-                        </div>
+                            @endforeach
+                        @endif
 
-                        <div class="d-flex align-items-center mb-3">
-                            <div class="bg-success text-white rounded-circle d-flex align-items-center justify-content-center me-3" 
-                                 style="width: 50px; height: 50px;">
-                                <i class="fab fa-whatsapp"></i>
+                        @if(isset($contactInfo['whatsapp']))
+                            @foreach($contactInfo['whatsapp'] as $whatsapp)
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="bg-success text-white rounded-circle d-flex align-items-center justify-content-center me-3" 
+                                     style="width: 50px; height: 50px;">
+                                    <i class="fab fa-whatsapp"></i>
+                                </div>
+                                <div>
+                                    <h6 class="fw-bold mb-1">{{ $whatsapp->label ?? 'WhatsApp' }}</h6>
+                                    <p class="text-muted mb-0">{{ $whatsapp->value }}</p>
+                                    <small class="text-success">Respon cepat 24/7</small>
+                                </div>
                             </div>
-                            <div>
-                                <h6 class="fw-bold mb-1">WhatsApp</h6>
-                                <p class="text-muted mb-0">+62 812-3456-7890</p>
-                                <small class="text-success">Respon cepat 24/7</small>
-                            </div>
-                        </div>
+                            @endforeach
+                        @endif
 
-                        <div class="d-flex align-items-center mb-3">
-                            <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" 
-                                 style="width: 50px; height: 50px;">
-                                <i class="fas fa-phone"></i>
+                        @if(isset($contactInfo['phone']))
+                            @foreach($contactInfo['phone'] as $phone)
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" 
+                                     style="width: 50px; height: 50px;">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div>
+                                    <h6 class="fw-bold mb-1">{{ $phone->label ?? 'Telepon' }}</h6>
+                                    <p class="text-muted mb-0">{{ $phone->value }}</p>
+                                </div>
                             </div>
-                            <div>
-                                <h6 class="fw-bold mb-1">Telepon</h6>
-                                <p class="text-muted mb-0">(021) 8890-1234</p>
-                            </div>
-                        </div>
+                            @endforeach
+                        @endif
 
-                        <div class="d-flex align-items-center mb-3">
-                            <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" 
-                                 style="width: 50px; height: 50px;">
-                                <i class="fas fa-envelope"></i>
+                        @if(isset($contactInfo['email']))
+                            @foreach($contactInfo['email'] as $email)
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" 
+                                     style="width: 50px; height: 50px;">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <h6 class="fw-bold mb-1">{{ $email->label ?? 'Email' }}</h6>
+                                    <p class="text-muted mb-0">{{ $email->value }}</p>
+                                </div>
                             </div>
-                            <div>
-                                <h6 class="fw-bold mb-1">Email</h6>
-                                <p class="text-muted mb-0">info@alpinet.id</p>
-                            </div>
-                        </div>
+                            @endforeach
+                        @endif
 
-                        <div class="d-flex align-items-center">
-                            <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" 
-                                 style="width: 50px; height: 50px;">
-                                <i class="fas fa-clock"></i>
+                        @if(isset($contactInfo['hours']))
+                            @foreach($contactInfo['hours'] as $hours)
+                            <div class="d-flex align-items-center">
+                                <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" 
+                                     style="width: 50px; height: 50px;">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div>
+                                    <h6 class="fw-bold mb-1">{{ $hours->label ?? 'Jam Operasional' }}</h6>
+                                    <p class="text-muted mb-0">
+                                        {!! nl2br($hours->value) !!}
+                                        <br><small class="text-success">Support teknis 24/7</small>
+                                    </p>
+                                </div>
                             </div>
-                            <div>
-                                <h6 class="fw-bold mb-1">Jam Operasional</h6>
-                                <p class="text-muted mb-0">
-                                    Senin - Jumat: 08:00 - 17:00<br>
-                                    Sabtu: 08:00 - 15:00<br>
-                                    <small class="text-success">Support teknis 24/7</small>
-                                </p>
-                            </div>
-                        </div>
+                            @endforeach
+                        @endif
                     </div>
                 </div>
 
@@ -217,18 +263,20 @@
                     <div class="card-body p-4">
                         <h5 class="fw-bold mb-3">Area Jangkauan</h5>
                         <div class="row g-2">
-                            <div class="col-6">
-                                <span class="badge bg-light text-dark w-100">Bekasi Timur</span>
-                            </div>
-                            <div class="col-6">
-                                <span class="badge bg-light text-dark w-100">Bekasi Barat</span>
-                            </div>
-                            <div class="col-6">
-                                <span class="badge bg-light text-dark w-100">Bekasi Utara</span>
-                            </div>
-                            <div class="col-6">
-                                <span class="badge bg-light text-dark w-100">Bekasi Selatan</span>
-                            </div>
+                            @foreach($serviceAreas->chunk(2) as $areaChunk)
+                                @foreach($areaChunk as $area)
+                                <div class="col-6">
+                                    <span class="badge w-100 
+                                        @if($area->coverage_quality == 'excellent') bg-success
+                                        @elseif($area->coverage_quality == 'good') bg-primary
+                                        @elseif($area->coverage_quality == 'fair') bg-warning text-dark
+                                        @else bg-light text-dark
+                                        @endif">
+                                        {{ $area->area_name }}
+                                    </span>
+                                </div>
+                                @endforeach
+                            @endforeach
                         </div>
                         <div class="mt-3">
                             <small class="text-muted">

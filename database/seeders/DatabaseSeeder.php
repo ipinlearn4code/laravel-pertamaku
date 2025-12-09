@@ -22,5 +22,12 @@ class DatabaseSeeder extends Seeder
 
         // Seed blog posts
         $this->call(BlogPostSeeder::class);
+        
+        // Seed company profile data
+        $this->call([
+            InternetPackageSeeder::class,
+            ContactInfoSeeder::class,
+            ServiceAreaSeeder::class,
+        ]);
     }
 }

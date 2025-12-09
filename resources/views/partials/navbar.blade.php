@@ -2,7 +2,7 @@
     <div class="container">
         <!-- Brand -->
         <a class="navbar-brand" href="{{ url('/') }}">
-            <img src="{{ asset('logo.png') }}" alt="AlpiNet Logo" style="height: 30px;" class="me-2">AlpiNet
+            <img src="{{ asset('logo.png') }}" alt="AlpiNet Logo" style="height: 30px;" class="me-2">
         </a>
 
         <!-- Mobile menu button -->

@@ -1,25 +1,19 @@
 <?php
 
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 // Company Profile Website Routes
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+Route::get('/', [PageController::class, 'home'])->name('home');
+Route::get('/about', [PageController::class, 'about'])->name('about');
+Route::get('/services', [PageController::class, 'services'])->name('services');
 
-Route::get('/about', function () {
-    return view('about');
-})->name('about');
-
-Route::get('/services', function () {
-    return view('services');
-})->name('services');
-
-Route::get('/contact', function () {
-    return view('contact');
-})->name('contact');
+// Contact Routes (Public - No Auth Required)
+Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 
 // Blog Routes
 Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
@@ -44,6 +38,10 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
     })->name('dashboard');
     
     Route::resource('blog', \App\Http\Controllers\Admin\BlogController::class);
+    Route::resource('packages', \App\Http\Controllers\Admin\InternetPackageController::class);
+    Route::resource('submissions', \App\Http\Controllers\Admin\ContactSubmissionController::class)->except(['create', 'store']);
+    Route::resource('contact-info', \App\Http\Controllers\Admin\ContactInfoController::class);
+    Route::resource('service-areas', \App\Http\Controllers\Admin\ServiceAreaController::class);
 });
 
 require __DIR__.'/auth.php';
