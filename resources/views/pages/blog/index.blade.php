@@ -1,44 +1,87 @@
-@extends('layouts.master')
+@extends('layouts.app')
 
-@section('title', 'Blog - My Simple Blog')
+@section('title', 'Blog - AlpiNet')
 
 @section('content')
-<div class="max-w-4xl mx-auto">
-    <!-- Page Header -->
-    <div class="bg-white rounded-lg shadow-sm p-8 mb-8">
-        <h2 class="text-4xl font-bold text-gray-800 mb-4">Semua Artikel</h2>
-        <p class="text-lg text-gray-600">
-            Koleksi artikel terbaru tentang programming, web development, dan teknologi.
-        </p>
-    </div>
-
-    <!-- Blog Posts -->
-    <div class="space-y-6 mb-8">
-        @if($paginatedPosts->count() > 0)
-            @foreach($paginatedPosts as $post)
-            @endforeach
-        @else
-            <div class="bg-white rounded-lg shadow-sm p-8 text-center">
-                <p class="text-gray-500 text-lg">Belum ada artikel yang tersedia.</p>
-            </div>
-        @endif
-    </div>
-
-    
-
-    <!-- Blog Stats -->
-    <div class="mt-8 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg p-6 text-center">
-        <h3 class="text-xl font-bold mb-2">📊 Statistik Blog</h3>
-        <div class="flex justify-center space-x-8">
-            <div>
-                <div class="text-2xl font-bold">5</div>
-                <div class="text-sm opacity-90">Total Artikel</div>
-            </div>
-            <div>
-                <div class="text-2xl font-bold">{{ $totalPages }}</div>
-                <div class="text-sm opacity-90">Total Halaman</div>
+<!-- Page Header -->
+<section class="hero-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center">
+                <h1 class="display-4 fw-bold mb-4">Blog AlpiNet</h1>
+                <p class="lead">
+                    Koleksi artikel terbaru tentang teknologi internet, tips networking, dan update industri telekomunikasi.
+                </p>
             </div>
         </div>
     </div>
-</div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+        <div class="row g-4">
+            @if($posts->count() > 0)
+                @foreach($posts as $post)
+                <div class="col-lg-6">
+                    <div class="card h-100 border-0 shadow-sm card-hover">
+                        <div class="card-body p-4">
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <span class="badge bg-primary">{{ $post->formatted_published_date }}</span>
+                                <small class="text-muted">By {{ $post->author->name }}</small>
+                            </div>
+                            <h5 class="card-title fw-bold">
+                                <a href="{{ route('blog.show', $post->slug) }}" class="text-decoration-none text-dark">
+                                    {{ $post->title }}
+                                </a>
+                            </h5>
+                            <p class="card-text text-muted">{{ $post->summary }}</p>
+                            <a href="{{ route('blog.show', $post->slug) }}" class="btn btn-outline-primary">
+                                <i class="fas fa-arrow-right me-2"></i>Baca Selengkapnya
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            @else
+                <div class="col-12">
+                    <div class="card border-0 shadow-sm text-center p-5">
+                        <div class="card-body">
+                            <i class="fas fa-newspaper fa-3x text-muted mb-3"></i>
+                            <h5>Belum Ada Artikel</h5>
+                            <p class="text-muted">Artikel blog akan segera hadir. Stay tuned!</p>
+                        </div>
+                    </div>
+                </div>
+            @endif
+        </div>
+
+        <!-- Pagination -->
+        @if($posts->hasPages())
+        <div class="d-flex justify-content-center mt-5">
+            {{ $posts->links() }}
+        </div>
+        @endif
+
+        <!-- Blog Stats -->
+        <div class="row mt-5">
+            <div class="col-lg-8 mx-auto">
+                <div class="card bg-primary text-white border-0">
+                    <div class="card-body text-center p-4">
+                        <h5 class="fw-bold mb-3">📊 Statistik Blog</h5>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="h4 fw-bold">{{ $posts->total() }}</div>
+                                <div class="small opacity-75">Total Artikel</div>
+                            </div>
+                            <div class="col-6">
+                                <div class="h4 fw-bold">{{ $posts->lastPage() }}</div>
+                                <div class="small opacity-75">Total Halaman</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 @endsection

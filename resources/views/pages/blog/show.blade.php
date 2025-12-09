@@ -1,103 +1,150 @@
-@extends('layouts.master')
+@extends('layouts.app')
 
-@section('title', $post['title'] . ' - My Simple Blog')
+@section('title', $post->title . ' - Blog AlpiNet')
 
 @section('content')
-<div class="max-w-4xl mx-auto">
-    <!-- Back to Blog -->
-    <div class="mb-6">
-        <a href="{{ route('blog.index') }}" class="text-blue-600 hover:text-blue-800 transition-colors">
-            ← Kembali ke Blog
-        </a>
+<!-- Page Header -->
+<section class="hero-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center">
+                <h1 class="display-5 fw-bold mb-4">{{ $post->title }}</h1>
+                <div class="d-flex justify-content-center align-items-center gap-3 text-light">
+                    <span><i class="fas fa-calendar me-1"></i>{{ $post->formatted_published_date }}</span>
+                    <span>•</span>
+                    <span><i class="fas fa-user me-1"></i>{{ $post->author->name }}</span>
+                </div>
+            </div>
+        </div>
     </div>
+</section>
 
-    <!-- Article -->
-    <article class="bg-white rounded-lg shadow-sm overflow-hidden">
-        <!-- Article Header -->
-        <div class="p-8 border-b border-gray-200">
-            <h1 class="text-4xl font-bold text-gray-800 mb-4">{{ $post['title'] }}</h1>
-            
-            <div class="flex items-center text-sm text-gray-600 space-x-4">
-                <span>📅 {{ date('d M Y', strtotime($post['created_at'])) }}</span>
-                <span>👤 Admin</span>
-                <span>⏱️ 3 min read</span>
-            </div>
+<section class="py-5">
+    <div class="container">
+        <!-- Back Button -->
+        <div class="mb-4">
+            <a href="{{ route('blog.index') }}" class="btn btn-outline-primary">
+                <i class="fas fa-arrow-left me-2"></i>Kembali ke Blog
+            </a>
         </div>
 
-        <!-- Article Content -->
-        <div class="p-8">
-            <!-- Summary -->
-            <div class="bg-blue-50 border-l-4 border-blue-400 p-4 mb-6">
-                <p class="text-blue-800 font-medium">{{ $post['summary'] }}</p>
-            </div>
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <!-- Article Card -->
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body p-5">
+                        <!-- Article Summary -->
+                        <div class="alert alert-info border-0" role="alert">
+                            <h6 class="alert-heading"><i class="fas fa-info-circle me-2"></i>Ringkasan</h6>
+                            <p class="mb-0">{{ $post->summary }}</p>
+                        </div>
 
-            <!-- Main Content -->
-            <div class="prose prose-lg max-w-none">
-                <p class="text-gray-700 leading-relaxed text-lg">
-                    {{ $post['content'] }}
-                </p>
+                        <!-- Article Content -->
+                        <div class="mt-4">
+                            <div class="content-wrapper">
+                                {!! nl2br(e($post->content)) !!}
+                            </div>
+                        </div>
 
-                @if($post['id'] == 1) {{-- Conditional content untuk artikel Laravel --}}
-                    <h3 class="text-2xl font-bold text-gray-800 mt-8 mb-4">Fitur Utama Laravel</h3>
-                    
-                    @php
-                        $features = [
-                            'Eloquent ORM - Object Relational Mapping yang elegant',
-                            'Blade Templating - Template engine yang powerful',
-                            'Artisan CLI - Command line interface untuk development',
-                            'Route Model Binding - Automatic injection',
-                            'Middleware - HTTP middleware layer'
-                        ];
-                    @endphp
+                        <!-- Article Tags -->
+                        <div class="mt-5 pt-4 border-top">
+                            <h6 class="fw-bold mb-3">Tags:</h6>
+                            <div class="d-flex flex-wrap gap-2">
+                                @php
+                                    $tags = match($post->id) {
+                                        1 => ['Laravel', 'PHP', 'Framework', 'Web Development'],
+                                        2 => ['PHP', 'Programming', 'Tips', 'Beginner'],
+                                        3 => ['Database', 'Design', 'Best Practices', 'SQL'],
+                                        4 => ['Frontend', 'Backend', 'Web Development', 'Career'],
+                                        default => ['Web Security', 'Security', 'Best Practices', 'Programming']
+                                    };
+                                @endphp
 
-                    <ul class="space-y-2 mb-6">
-                        @foreach($features as $feature)
-                            <li class="flex items-start">
-                                <span class="text-green-500 mr-2">✓</span>
-                                <span class="text-gray-700">{{ $feature }}</span>
-                            </li>
+                                @foreach($tags as $tag)
+                                    <span class="badge bg-light text-dark">{{ $tag }}</span>
+                                @endforeach
+                            </div>
+                        </div>
+
+                        <!-- Share Section -->
+                        <div class="mt-4 pt-4 border-top">
+                            <h6 class="fw-bold mb-3">Bagikan Artikel:</h6>
+                            <div class="d-flex gap-2">
+                                <a href="https://wa.me/?text=Baca artikel menarik: {{ $post->title }} - {{ url()->current() }}" 
+                                   target="_blank" class="btn btn-success btn-sm">
+                                    <i class="fab fa-whatsapp me-2"></i>WhatsApp
+                                </a>
+                                <a href="https://www.facebook.com/sharer/sharer.php?u={{ url()->current() }}" 
+                                   target="_blank" class="btn btn-primary btn-sm">
+                                    <i class="fab fa-facebook me-2"></i>Facebook
+                                </a>
+                                <button type="button" class="btn btn-secondary btn-sm" onclick="copyToClipboard()">
+                                    <i class="fas fa-link me-2"></i>Copy Link
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Author Info -->
+                        <div class="mt-5 pt-4 border-top">
+                            <div class="d-flex align-items-center">
+                                <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" 
+                                     style="width: 50px; height: 50px;">
+                                    <i class="fas fa-user fa-lg"></i>
+                                </div>
+                                <div>
+                                    <h6 class="fw-bold mb-1">{{ $post->author->name }}</h6>
+                                    <p class="text-muted mb-0 small">Content Creator AlpiNet</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Related Posts -->
+                <div class="mt-5">
+                    <h5 class="fw-bold mb-4">Artikel Lainnya</h5>
+                    <div class="row g-3">
+                        @php
+                            $relatedPosts = \App\Models\BlogPost::published()
+                                            ->where('id', '!=', $post->id)
+                                            ->latest()
+                                            ->take(2)
+                                            ->get();
+                        @endphp
+                        
+                        @foreach($relatedPosts as $relatedPost)
+                        <div class="col-md-6">
+                            <div class="card border-0 shadow-sm card-hover h-100">
+                                <div class="card-body">
+                                    <h6 class="card-title fw-bold">
+                                        <a href="{{ route('blog.show', $relatedPost->slug) }}" 
+                                           class="text-decoration-none text-dark">
+                                            {{ $relatedPost->title }}
+                                        </a>
+                                    </h6>
+                                    <p class="card-text text-muted small">{{ Str::limit($relatedPost->summary, 100) }}</p>
+                                    <small class="text-muted">{{ $relatedPost->formatted_published_date }}</small>
+                                </div>
+                            </div>
+                        </div>
                         @endforeach
-                    </ul>
-                @endif
-
-                <div class="bg-gray-50 rounded-lg p-6 mt-8">
-                    <h4 class="font-semibold text-gray-800 mb-2">💡 Kesimpulan</h4>
-                    <p class="text-gray-700">
-                        @if($post['id'] == 1)
-                            Laravel memberikan fondasi yang kuat untuk pengembangan aplikasi web modern dengan sintaks yang elegant dan dokumentasi yang lengkap.
-                        @elseif($post['id'] == 2)
-                            Dengan mengikuti tips-tips ini, perjalanan belajar PHP Anda akan menjadi lebih terarah dan efektif.
-                        @else
-                            Artikel ini memberikan insight berharga yang dapat diterapkan dalam project development Anda.
-                        @endif
-                    </p>
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
+</section>
 
-        <!-- Article Footer -->
-        <div class="px-8 py-6 bg-gray-50 border-t border-gray-200">
-            <div class="flex flex-wrap gap-2 mb-4">
-                @php
-                    $tags = match($post['id']) {
-                        1 => ['Laravel', 'PHP', 'Framework', 'Web Development'],
-                        2 => ['PHP', 'Programming', 'Tips', 'Beginner'],
-                        3 => ['Database', 'Design', 'Best Practices', 'SQL'],
-                        4 => ['Frontend', 'Backend', 'Web Development', 'Career'],
-                        default => ['Web Security', 'Security', 'Best Practices', 'Programming']
-                    };
-                @endphp
-
-                @foreach($tags as $tag)
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">{{ $tag }}</span>
-                @endforeach
-            </div>
-
-            <div class="flex justify-between items-center">
-                <div class="text-sm text-gray-600">
-                    Artikel ini bermanfaat? Bagikan kepada teman-teman Anda!
-                </div>
-                <div class="flex space-x-3">
+@push('scripts')
+<script>
+function copyToClipboard() {
+    navigator.clipboard.writeText(window.location.href).then(function() {
+        alert('Link artikel berhasil disalin!');
+    });
+}
+</script>
+@endpush
+@endsection
                     <button class="text-blue-600 hover:text-blue-800 transition-colors">
                         👍 Like
                     </button>

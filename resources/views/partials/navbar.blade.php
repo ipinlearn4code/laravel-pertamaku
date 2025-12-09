@@ -30,6 +30,11 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link {{ request()->is('blog*') ? 'active' : '' }}" href="{{ route('blog.index') }}">
+                        <i class="fas fa-newspaper me-1"></i>Blog
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link {{ request()->is('contact') ? 'active' : '' }}" href="{{ url('/contact') }}">
                         <i class="fas fa-envelope me-1"></i>Contact
                     </a>
