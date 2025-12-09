@@ -81,6 +81,37 @@
                                     <div>
                                         <h3 class="fw-bold mb-0">{{ \App\Models\ContactSubmission::count() }}</h3>
                                         <small class="text-muted">Pendaftaran</small>
+                                        <div class="mt-1">
+                                            <span class="badge bg-success">{{ \App\Models\ContactSubmission::whereDate('created_at', today())->count() }}</span>
+                                            <small class="text-muted ms-1">Hari Ini</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="card border-0 shadow-sm h-100">
+                        <a href="{{ route('admin.testimonials.index') }}" class="text-decoration-none text-dark">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+                                    <div class="bg-info text-white rounded-circle d-flex align-items-center justify-content-center me-3"
+                                        style="width: 50px; height: 50px;">
+                                        <i class="fas fa-comments"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="fw-bold mb-0">{{ \App\Models\Testimonial::count() }}</h3>
+                                        <small class="text-muted">Testimoni</small>
+                                        <div class="mt-1">
+                                            <small class="text-success">{{ \App\Models\Testimonial::published()->count() }} Published</small>
+                                            <span class="mx-1">•</span>
+                                            <small class="text-warning">{{ \App\Models\Testimonial::unpublished()->count() }} Pending</small>
+                                            <br>
+                                            <span class="badge bg-info mt-1">{{ \App\Models\Testimonial::whereDate('created_at', today())->count() }}</span>
+                                            <small class="text-muted ms-1">Hari Ini</small>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -93,7 +124,7 @@
                         <a href="{{ route('admin.service-areas.index') }}" class="text-decoration-none text-dark">
                             <div class="card-body">
                                 <div class="d-flex align-items-center">
-                                    <div class="bg-info text-white rounded-circle d-flex align-items-center justify-content-center me-3"
+                                    <div class="bg-secondary text-white rounded-circle d-flex align-items-center justify-content-center me-3"
                                         style="width: 50px; height: 50px;">
                                         <i class="fas fa-map-marker-alt"></i>
                                     </div>
@@ -196,6 +227,9 @@
                         </div>
                         <div class="card-body">
                             <div class="d-grid gap-2">
+                                <a href="{{ route('admin.testimonials.index') }}" class="btn btn-outline-secondary btn-sm">
+                                    <i class="fas fa-comments me-2"></i>Kelola Testimoni
+                                </a>
                                 <a href="{{ route('admin.service-areas.index') }}" class="btn btn-outline-secondary btn-sm">
                                     <i class="fas fa-map me-2"></i>Area Layanan
                                 </a>

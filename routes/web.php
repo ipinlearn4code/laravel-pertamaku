@@ -4,6 +4,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TestimonialController;
 use Illuminate\Support\Facades\Route;
 
 // Company Profile Website Routes
@@ -14,6 +15,10 @@ Route::get('/services', [PageController::class, 'services'])->name('services');
 // Contact Routes (Public - No Auth Required)
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+
+// Testimonial Routes (Public)
+Route::get('/testimoni', [TestimonialController::class, 'create'])->name('testimonials.create');
+Route::post('/testimoni', [TestimonialController::class, 'store'])->name('testimonials.store');
 
 // Blog Routes
 Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
@@ -42,6 +47,10 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
     Route::resource('submissions', \App\Http\Controllers\Admin\ContactSubmissionController::class)->except(['create', 'store']);
     Route::resource('contact-info', \App\Http\Controllers\Admin\ContactInfoController::class);
     Route::resource('service-areas', \App\Http\Controllers\Admin\ServiceAreaController::class);
+    
+    // Admin Testimonial Routes
+    Route::resource('testimonials', TestimonialController::class);
+    Route::patch('testimonials/{testimonial}/toggle-publish', [TestimonialController::class, 'togglePublish'])->name('testimonials.toggle-publish');
 });
 
 require __DIR__.'/auth.php';

@@ -207,30 +207,13 @@
             </div>
         </div>
 
-        <div class="row g-4">
-            <div class="col-md-6">
-                <div class="card h-100 border-0 shadow-sm">
-                    <div class="card-body p-4">
-                        <div class="mb-3">
-                            <i class="fas fa-quote-left fa-2x text-primary"></i>
-                        </div>
-                        <p class="text-muted mb-3">
-                            "Internetnya stabil banget, cocok buat kerja WFH."
-                        </p>
-                        <div class="d-flex align-items-center">
-                            <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" 
-                                 style="width: 40px; height: 40px;">
-                                <i class="fas fa-user"></i>
-                            </div>
-                            <div>
-                                <h6 class="fw-bold mb-0">Budi</h6>
-                                <small class="text-muted">Warga Burangkeng</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        @php
+            $testimonials = \App\Models\Testimonial::published()->latest('published_at')->take(4)->get();
+        @endphp
 
+        @if($testimonials->count() > 0)
+        <div class="row g-4">
+            @foreach($testimonials as $testimonial)
             <div class="col-md-6">
                 <div class="card h-100 border-0 shadow-sm">
                     <div class="card-body p-4">
@@ -238,7 +221,7 @@
                             <i class="fas fa-quote-left fa-2x text-primary"></i>
                         </div>
                         <p class="text-muted mb-3">
-                            "Anak-anak bisa belajar online lancar, harga juga ramah."
+                            "{{ $testimonial->message }}"
                         </p>
                         <div class="d-flex align-items-center">
                             <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" 
@@ -246,14 +229,30 @@
                                 <i class="fas fa-user"></i>
                             </div>
                             <div>
-                                <h6 class="fw-bold mb-0">Ibu Sari</h6>
-                                <small class="text-muted">Warga Tambelang</small>
+                                <h6 class="fw-bold mb-0">{{ $testimonial->name }}</h6>
+                                <small class="text-muted">{{ $testimonial->location }}</small>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            @endforeach
         </div>
+        
+        <div class="text-center mt-4">
+            <a href="{{ route('testimonials.create') }}" class="btn btn-primary-custom">
+                <i class="fas fa-pen me-2"></i>Beri Testimoni
+            </a>
+        </div>
+        @else
+        <div class="text-center py-5">
+            <i class="fas fa-comments fa-3x text-muted mb-3"></i>
+            <p class="text-muted mb-3">Belum ada testimoni yang dipublikasikan.</p>
+            <a href="{{ route('testimonials.create') }}" class="btn btn-primary-custom">
+                <i class="fas fa-pen me-2"></i>Jadilah yang Pertama Beri Testimoni
+            </a>
+        </div>
+        @endif
     </div>
 </section>
 

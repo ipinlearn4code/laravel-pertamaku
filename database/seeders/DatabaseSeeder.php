@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
             InternetPackageSeeder::class,
             ContactInfoSeeder::class,
             ServiceAreaSeeder::class,
+            TestimonialSeeder::class,
         ]);
     }
 }
