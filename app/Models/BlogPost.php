@@ -16,6 +16,7 @@ class BlogPost extends Model
         'slug',
         'summary',
         'content',
+        'image',
         'author_id',
         'published_at',
         'is_published'

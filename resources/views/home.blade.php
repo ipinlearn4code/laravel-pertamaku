@@ -194,6 +194,7 @@
     </div>
 </section>
 
+
 <!-- Testimoni Pelanggan -->
 <section class="py-5 bg-light">
     <div class="container">
@@ -255,6 +256,187 @@
         </div>
     </div>
 </section>
+
+<!-- Berita & Tips Terbaru -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center mb-5">
+                <h2 class="fw-bold mb-3">Berita & Tips Terbaru</h2>
+                <p class="lead text-muted">
+                    Update terbaru seputar teknologi internet dan tips dari AlpiNet.
+                </p>
+            </div>
+        </div>
+
+        @php
+            $latestPosts = \App\Models\BlogPost::published()->latest()->take(4)->get();
+        @endphp
+
+        @if($latestPosts->count() > 0)
+        <!-- Custom Carousel with Center Focus -->
+        <div class="custom-carousel-container position-relative">
+            <div class="custom-carousel" id="customBlogCarousel">
+                @foreach($latestPosts as $index => $post)
+                <div class="carousel-slide {{ $index === 0 ? 'active' : '' }}" data-index="{{ $index }}">
+                    <div class="card border-0 shadow-lg">
+                        @if($post->image)
+                            <img src="data:image/jpeg;base64,{{ base64_encode($post->image) }}" 
+                                 class="card-img-top" 
+                                 style="height: 250px; object-fit: cover;" 
+                                 alt="{{ $post->title }}">
+                        @else
+                            <div class="bg-primary text-white d-flex align-items-center justify-content-center" style="height: 250px;">
+                                <i class="fas fa-newspaper fa-3x"></i>
+                            </div>
+                        @endif
+                        <div class="card-body p-4">
+                            <small class="text-primary fw-semibold">{{ $post->published_at->format('d M Y') }}</small>
+                            <h5 class="fw-bold mt-2 mb-3">{{ $post->title }}</h5>
+                            <p class="text-muted">{{ Str::limit($post->summary, 120) }}</p>
+                            <a href="{{ route('blog.show', $post->slug) }}" class="btn btn-primary">
+                                <i class="fas fa-arrow-right me-2"></i>Baca Selengkapnya
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+            
+            <!-- Navigation Arrows -->
+            <button class="custom-prev-btn" id="prevBtn">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="custom-next-btn" id="nextBtn">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            
+            <!-- Dots Indicator -->
+            <div class="custom-dots">
+                @foreach($latestPosts as $index => $post)
+                <button class="custom-dot {{ $index === 0 ? 'active' : '' }}" data-index="{{ $index }}"></button>
+                @endforeach
+            </div>
+        </div>
+
+        <div class="text-center mt-4">
+            <a href="{{ route('blog.index') }}" class="btn btn-primary-custom">
+                <i class="fas fa-newspaper me-2"></i>Lihat Semua Berita
+            </a>
+        </div>
+
+        @else
+        <div class="text-center py-5">
+            <i class="fas fa-newspaper fa-3x text-muted mb-3"></i>
+            <p class="text-muted">Berita akan segera hadir. Stay tuned!</p>
+        </div>
+        @endif
+    </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const carousel = document.getElementById('customBlogCarousel');
+    const slides = document.querySelectorAll('.carousel-slide');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const dots = document.querySelectorAll('.custom-dot');
+    
+    let currentIndex = 0;
+    const totalSlides = slides.length;
+    
+    if (totalSlides === 0) return;
+    
+    function updateCarousel() {
+        slides.forEach((slide, index) => {
+            slide.classList.remove('active', 'prev', 'next');
+            
+            if (index === currentIndex) {
+                slide.classList.add('active');
+            } else if (index === (currentIndex - 1 + totalSlides) % totalSlides) {
+                slide.classList.add('prev');
+            } else if (index === (currentIndex + 1) % totalSlides) {
+                slide.classList.add('next');
+            }
+        });
+        
+        // Update dots
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentIndex);
+        });
+    }
+    
+    function nextSlide() {
+        currentIndex = (currentIndex + 1) % totalSlides;
+        updateCarousel();
+    }
+    
+    function prevSlide() {
+        currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+        updateCarousel();
+    }
+    
+    function goToSlide(index) {
+        currentIndex = index;
+        updateCarousel();
+    }
+    
+    // Event listeners
+    nextBtn?.addEventListener('click', nextSlide);
+    prevBtn?.addEventListener('click', prevSlide);
+    
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => goToSlide(index));
+    });
+    
+    // Auto-play (optional)
+    let autoplayInterval;
+    
+    function startAutoplay() {
+        autoplayInterval = setInterval(nextSlide, 3500);
+    }
+    
+    function stopAutoplay() {
+        clearInterval(autoplayInterval);
+    }
+    
+    // Start autoplay
+    startAutoplay();
+    
+    // Pause autoplay on hover
+    const carouselContainer = document.querySelector('.custom-carousel-container');
+    carouselContainer?.addEventListener('mouseenter', stopAutoplay);
+    carouselContainer?.addEventListener('mouseleave', startAutoplay);
+    
+    // Touch/swipe support for mobile
+    let startX = 0;
+    let endX = 0;
+    
+    carouselContainer?.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+    });
+    
+    carouselContainer?.addEventListener('touchmove', (e) => {
+        endX = e.touches[0].clientX;
+    });
+    
+    carouselContainer?.addEventListener('touchend', () => {
+        const diff = startX - endX;
+        const threshold = 50;
+        
+        if (Math.abs(diff) > threshold) {
+            if (diff > 0) {
+                nextSlide();
+            } else {
+                prevSlide();
+            }
+        }
+    });
+    
+    // Initialize
+    updateCarousel();
+});
+</script>
 
 <!-- Call to Action -->
 <section class="py-5">

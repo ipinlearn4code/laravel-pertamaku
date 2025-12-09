@@ -13,7 +13,7 @@
 
         <!-- Navigation Menu -->
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
+            <ul class="navbar-nav me-auto">
                 <li class="nav-item">
                     <a class="nav-link {{ request()->is('/') ? 'active' : '' }}" href="{{ url('/') }}">
                         <i class="fas fa-home me-1"></i>Home
@@ -30,14 +30,47 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->is('blog*') ? 'active' : '' }}" href="{{ route('blog.index') }}">
-                        <i class="fas fa-newspaper me-1"></i>Blog
-                    </a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link {{ request()->is('contact') ? 'active' : '' }}" href="{{ url('/contact') }}">
                         <i class="fas fa-envelope me-1"></i>Contact
                     </a>
+                </li>
+            </ul>
+            
+            <!-- Admin/Auth Menu -->
+            <ul class="navbar-nav">
+                @guest
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('login') }}">
+                            <i class="fas fa-sign-in-alt me-1"></i>Login
+                        </a>
+                    </li>
+                @else
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-user-cog me-1"></i>{{ Auth::user()->name }}
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="{{ route('admin.dashboard') }}">
+                                <i class="fas fa-tachometer-alt me-2"></i>Admin Dashboard
+                            </a></li>
+                            <li><a class="dropdown-item" href="{{ route('admin.blog.index') }}">
+                                <i class="fas fa-edit me-2"></i>Manage Blog
+                            </a></li>
+                            <li><a class="dropdown-item" href="{{ route('profile.edit') }}">
+                                <i class="fas fa-user me-2"></i>Profile
+                            </a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li>
+                                <form method="POST" action="{{ route('logout') }}" class="d-inline">
+                                    @csrf
+                                    <button type="submit" class="dropdown-item text-danger">
+                                        <i class="fas fa-sign-out-alt me-2"></i>Logout
+                                    </button>
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                @endguest
                 </li>
             </ul>
         </div>

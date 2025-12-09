@@ -16,7 +16,7 @@
             <div class="col-lg-8">
                 <div class="card border-0 shadow-sm">
                     <div class="card-body p-4">
-                        <form method="POST" action="{{ route('admin.blog.update', $blog) }}">
+                        <form method="POST" action="{{ route('admin.blog.update', $blog) }}" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
 
@@ -27,6 +27,23 @@
                                 @error('title')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="image" class="form-label">Featured Image</label>
+                                @if($blog->image)
+                                    <div class="mb-2">
+                                        <img src="data:image/jpeg;base64,{{ base64_encode($blog->image) }}" 
+                                             alt="Current image" class="img-thumbnail" style="max-height: 200px;">
+                                        <div class="form-text">Current image (upload new image to replace)</div>
+                                    </div>
+                                @endif
+                                <input type="file" class="form-control @error('image') is-invalid @enderror" 
+                                       id="image" name="image" accept="image/*">
+                                @error('image')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                                <div class="form-text">Upload a new image to replace the current one. Will be automatically compressed.</div>
                             </div>
 
                             <div class="mb-3">

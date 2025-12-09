@@ -16,7 +16,7 @@
             <div class="col-lg-8">
                 <div class="card border-0 shadow-sm">
                     <div class="card-body p-4">
-                        <form method="POST" action="{{ route('admin.blog.store') }}">
+                        <form method="POST" action="{{ route('admin.blog.store') }}" enctype="multipart/form-data">
                             @csrf
 
                             <div class="mb-3">
@@ -26,6 +26,16 @@
                                 @error('title')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="image" class="form-label">Featured Image</label>
+                                <input type="file" class="form-control @error('image') is-invalid @enderror" 
+                                       id="image" name="image" accept="image/*">
+                                @error('image')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                                <div class="form-text">Upload an image for the blog post. Will be automatically compressed.</div>
                             </div>
 
                             <div class="mb-3">
